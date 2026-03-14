@@ -47,6 +47,18 @@ apis:
         url: openapi/cloudzero-api-openapi.yml
       - type: Authorization
         url: https://docs.cloudzero.com/reference/authorization
+      - type: JSONSchema
+        url: json-schema/cloudzero-cost.json
+      - type: JSONSchema
+        url: json-schema/cloudzero-insight.json
+      - type: JSONSchema
+        url: json-schema/cloudzero-budget.json
+      - type: JSONSchema
+        url: json-schema/cloudzero-telemetry-record.json
+      - type: JSONSchema
+        url: json-schema/cloudzero-billing-drop.json
+      - type: JSONLD
+        url: json-ld/cloudzero-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

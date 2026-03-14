@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/cloudzero/blob/main/json-schema/cloudzero-insight.json",
+  "title": "CloudZero Insight",
+  "description": "Represents a cost insight for tracking cost anomalies and patterns within CloudZero.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the insight."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for the insight."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what the insight tracks."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the insight was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the insight was last updated."
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Filters applied to the insight for narrowing cost data."
+    },
+    "group_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Dimensions used for grouping cost data within the insight."
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

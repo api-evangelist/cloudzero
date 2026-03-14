@@ -1,0 +1,54 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "cloudzero": "https://api.cloudzero.com/v2/",
+    "costType": {
+      "@id": "cloudzero:costType",
+      "@type": "xsd:string"
+    },
+    "granularity": {
+      "@id": "cloudzero:granularity",
+      "@type": "xsd:string"
+    },
+    "groupBy": {
+      "@id": "cloudzero:groupBy",
+      "@type": "xsd:string"
+    },
+    "viewId": {
+      "@id": "cloudzero:viewId",
+      "@type": "xsd:string"
+    },
+    "budgetAmount": {
+      "@id": "cloudzero:budgetAmount",
+      "@type": "xsd:double"
+    },
+    "budgetPeriod": {
+      "@id": "cloudzero:budgetPeriod",
+      "@type": "xsd:string"
+    },
+    "threshold": {
+      "@id": "cloudzero:threshold",
+      "@type": "xsd:double"
+    },
+    "streamName": {
+      "@id": "cloudzero:streamName",
+      "@type": "xsd:string"
+    },
+    "telemetryValue": {
+      "@id": "cloudzero:telemetryValue",
+      "@type": "xsd:double"
+    },
+    "connectionId": {
+      "@id": "cloudzero:connectionId",
+      "@type": "xsd:string"
+    },
+    "lineItemCost": {
+      "@id": "cloudzero:lineItemCost",
+      "@type": "xsd:double"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/cloudzero/blob/main/json-schema/cloudzero-budget.json",
+  "title": "CloudZero Budget",
+  "description": "Represents a budget for tracking cloud spend against defined thresholds with notification rules.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the budget."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for the budget."
+    },
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "description": "Budget amount in dollars."
+    },
+    "period": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "quarterly",
+        "annual"
+      ],
+      "description": "Budget period defining the time window for tracking spend."
+    },
+    "view_id": {
+      "type": "string",
+      "description": "Identifier for the linked View that defines the cost scope."
+    },
+    "notifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "format": "double",
+            "description": "Threshold percentage that triggers the notification."
+          },
+          "recipients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Email addresses for notification recipients."
+          }
+        },
+        "required": [
+          "threshold",
+          "recipients"
+        ]
+      },
+      "description": "Notification rules triggered when spend reaches defined thresholds."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the budget was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the budget was last updated."
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "amount",
+    "period"
+  ]
+}

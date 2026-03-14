@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/cloudzero/blob/main/json-schema/cloudzero-cost.json",
+  "title": "CloudZero Cost",
+  "description": "Represents a cost data record returned by the CloudZero Billing API, including grouped dimensions and time-series cost values.",
+  "type": "object",
+  "properties": {
+    "group": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Key-value pairs representing the dimensions this cost record is grouped by (e.g., Account, Service, Region)."
+    },
+    "cost": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp for the cost data point."
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "description": "Cost amount for the data point."
+          }
+        },
+        "required": [
+          "timestamp",
+          "value"
+        ]
+      },
+      "description": "Time-series array of cost data points."
+    }
+  },
+  "required": [
+    "group",
+    "cost"
+  ]
+}

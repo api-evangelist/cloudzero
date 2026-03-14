@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/cloudzero/blob/main/json-schema/cloudzero-telemetry-record.json",
+  "title": "CloudZero Telemetry Record",
+  "description": "Represents a telemetry record for sending unit metric or allocation data to CloudZero for cost analysis and unit economics calculations.",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp for the telemetry record."
+    },
+    "value": {
+      "type": "number",
+      "format": "double",
+      "description": "Numeric value for the metric or allocation."
+    },
+    "granularity": {
+      "type": "string",
+      "enum": [
+        "HOURLY",
+        "DAILY",
+        "MONTHLY"
+      ],
+      "description": "Time granularity of the record."
+    },
+    "filter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Key-value pairs for filtering and grouping unit metric telemetry."
+    },
+    "element": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Key-value pairs identifying the element being allocated for allocation telemetry."
+    }
+  },
+  "required": [
+    "timestamp",
+    "value",
+    "granularity"
+  ]
+}

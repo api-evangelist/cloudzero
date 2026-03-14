@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/cloudzero/blob/main/json-schema/cloudzero-billing-drop.json",
+  "title": "CloudZero Billing Drop",
+  "description": "Represents cost data in CloudZero Common Bill Format (CBF) for ingestion via the AnyCost Stream Adaptor.",
+  "type": "object",
+  "properties": {
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp for the billing line item."
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "description": "Cost amount for the line item."
+          },
+          "service": {
+            "type": "string",
+            "description": "Service name associated with the cost."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the cost line item."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Additional metadata key-value pairs for the line item."
+          }
+        },
+        "required": [
+          "timestamp",
+          "cost"
+        ]
+      },
+      "description": "Array of cost line items in Common Bill Format."
+    }
+  },
+  "required": [
+    "line_items"
+  ]
+}
