@@ -2,30 +2,51 @@ aid: cloudzero
 name: CloudZero
 description: >-
   Automate the collection, allocation, and analysis of your infrastructure spend
-  to uncover waste and improve unit economics. 
+  to uncover waste and improve unit economics.
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - Cloud Cost Management
+  - FinOps
+  - Cost Allocation
+  - Cost Optimization
+  - Unit Economics
+  - Telemetry
+  - Budgets
 created: '2026-01-02'
-modified: '2026-01-02'
+modified: '2026-03-14'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/cloudzero/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: cloudzero:cloudzero
-    name: CloudZero
+  - aid: cloudzero:api
+    name: CloudZero API
     description: >-
-      Automate the collection, allocation, and analysis of your infrastructure
-      spend to uncover waste and improve unit economics. 
-    humanURL: ' https://www.cloudzero.com/'
+      The CloudZero API V2 enables you to automate the collection, allocation,
+      and analysis of your infrastructure spend. It provides endpoints for
+      querying billing costs and dimensions, managing insights and budgets,
+      sending unit metric and allocation telemetry data, and ingesting cost
+      data from any source via the AnyCost framework.
+    humanURL: https://docs.cloudzero.com/reference/introduction
+    baseURL: https://api.cloudzero.com
     tags:
-      - API
+      - Cloud Costs
+      - Billing
+      - Insights
+      - Budgets
+      - Telemetry
+      - Cost Allocation
+      - Unit Economics
+      - FinOps
     properties:
       - type: Documentation
-        url: ' https://www.cloudzero.com/'
+        url: https://docs.cloudzero.com/reference/introduction
+      - type: OpenAPI
+        url: openapi/cloudzero-api-openapi.yml
+      - type: Authorization
+        url: https://docs.cloudzero.com/reference/authorization
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

@@ -1,0 +1,982 @@
+openapi: 3.1.0
+info:
+  title: CloudZero API
+  description: >-
+    The CloudZero API V2 enables you to automate the collection, allocation, and
+    analysis of your infrastructure spend. It is organized around REST with
+    predictable resource-oriented URLs, accepts JSON request bodies, returns JSON
+    responses, and uses standard HTTP methods, headers, response codes, and
+    authentication.
+  version: 2.0.0
+  contact:
+    name: CloudZero
+    url: https://www.cloudzero.com/
+  termsOfService: https://www.cloudzero.com/terms-of-service
+servers:
+  - url: https://api.cloudzero.com
+    description: CloudZero Production API
+security:
+  - apiKey: []
+tags:
+  - name: Billing
+    description: Retrieve cost and dimension data for billing analysis.
+  - name: Insights
+    description: Create, read, update, and delete cost insights.
+  - name: Budgets
+    description: Create, read, update, and delete budgets for cost tracking.
+  - name: Unit Metric Telemetry
+    description: >-
+      Send, edit, and delete unit metric telemetry data related to your
+      system operations.
+  - name: Allocation Telemetry
+    description: >-
+      Send, edit, and delete allocation telemetry data for splitting cloud cost
+      data through custom allocation dimensions.
+  - name: AnyCost
+    description: >-
+      Ingest cost data from any source using the AnyCost Stream Adaptor and
+      Common Bill Format (CBF).
+paths:
+  /v2/billing/costs:
+    post:
+      operationId: getBillingCosts
+      summary: Get billing costs
+      description: >-
+        Returns cost data according to the parameters passed in. Supports
+        grouping by Account, Service, and other dimensions with various filters
+        and cost types.
+      tags:
+        - Billing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start:
+                  type: string
+                  format: date-time
+                  description: Start date for the cost query.
+                end:
+                  type: string
+                  format: date-time
+                  description: End date for the cost query.
+                group_by:
+                  type: array
+                  items:
+                    type: string
+                  description: >-
+                    Dimensions to group costs by (e.g., Account, Service,
+                    Region).
+                filter:
+                  type: object
+                  description: Filters to apply to the cost query.
+                  additionalProperties: true
+                granularity:
+                  type: string
+                  enum:
+                    - daily
+                    - monthly
+                    - cumulative
+                  description: Time granularity for the cost data.
+                cost_type:
+                  type: string
+                  enum:
+                    - billed
+                    - discounted
+                    - discounted_amortized
+                    - amortized
+                    - invoiced_amortized
+                    - real
+                    - on_demand
+                  description: The type of cost data to return.
+              required:
+                - start
+                - end
+      responses:
+        '200':
+          description: Successful response with cost data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        group:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        cost:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              timestamp:
+                                type: string
+                                format: date-time
+                              value:
+                                type: number
+                                format: double
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '429':
+          description: Rate limit exceeded.
+  /v2/billing/dimensions:
+    get:
+      operationId: getBillingDimensions
+      summary: Get billing dimensions
+      description: >-
+        Returns a list of dimensions available for use in the getBillingCosts
+        API and in CostFormation.
+      tags:
+        - Billing
+      responses:
+        '200':
+          description: Successful response with dimension data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the dimension.
+                        name:
+                          type: string
+                          description: Display name for the dimension.
+                        type:
+                          type: string
+                          description: The dimension type.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+  /v2/insights:
+    get:
+      operationId: getInsights
+      summary: Get all insights
+      description: Returns a list of all insights.
+      tags:
+        - Insights
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination.
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+          description: Number of results per page.
+      responses:
+        '200':
+          description: Successful response with list of insights.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Insight'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+    post:
+      operationId: createInsight
+      summary: Create a new insight
+      description: Creates a new insight for tracking cost anomalies and patterns.
+      tags:
+        - Insights
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsightInput'
+      responses:
+        '201':
+          description: Insight created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Insight'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+  /v2/insights/{insight_id}:
+    get:
+      operationId: getOneInsight
+      summary: Get a single insight
+      description: Returns a single insight by its identifier.
+      tags:
+        - Insights
+      parameters:
+        - name: insight_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the insight.
+      responses:
+        '200':
+          description: Successful response with insight data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Insight'
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Insight not found.
+    put:
+      operationId: updateOneInsight
+      summary: Update an insight
+      description: Updates an existing insight.
+      tags:
+        - Insights
+      parameters:
+        - name: insight_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the insight.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsightInput'
+      responses:
+        '200':
+          description: Insight updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Insight'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Insight not found.
+    delete:
+      operationId: deleteOneInsight
+      summary: Delete an insight
+      description: Deletes a single insight by its identifier.
+      tags:
+        - Insights
+      parameters:
+        - name: insight_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the insight.
+      responses:
+        '204':
+          description: Insight deleted successfully.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Insight not found.
+  /v2/budgets:
+    get:
+      operationId: getBudgets
+      summary: Get all budgets
+      description: Returns a list of all budgets.
+      tags:
+        - Budgets
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination.
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+          description: Number of results per page.
+      responses:
+        '200':
+          description: Successful response with list of budgets.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Budget'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+    post:
+      operationId: createBudget
+      summary: Create a new budget
+      description: >-
+        Creates a new budget linked to a View for tracking spend against
+        business metrics.
+      tags:
+        - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BudgetInput'
+      responses:
+        '201':
+          description: Budget created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+  /v2/budgets/{budget_id}:
+    get:
+      operationId: getOneBudget
+      summary: Get a single budget
+      description: Returns a single budget by its identifier.
+      tags:
+        - Budgets
+      parameters:
+        - name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the budget.
+      responses:
+        '200':
+          description: Successful response with budget data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Budget not found.
+    put:
+      operationId: updateOneBudget
+      summary: Update a budget
+      description: Updates an existing budget.
+      tags:
+        - Budgets
+      parameters:
+        - name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the budget.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BudgetInput'
+      responses:
+        '200':
+          description: Budget updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Budget not found.
+    delete:
+      operationId: deleteOneBudget
+      summary: Delete a budget
+      description: Deletes a single budget by its identifier.
+      tags:
+        - Budgets
+      parameters:
+        - name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the budget.
+      responses:
+        '204':
+          description: Budget deleted successfully.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Budget not found.
+  /v1/telemetry/{stream_name}/records:
+    post:
+      operationId: postMetricTelemetry
+      summary: Post unit metric telemetry records
+      description: >-
+        Sends unit metric telemetry data related to your system operations.
+        The stream name can be used in unit economics calculations.
+      tags:
+        - Unit Metric Telemetry
+      parameters:
+        - name: stream_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the telemetry stream.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                records:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/MetricTelemetryRecord'
+              required:
+                - records
+      responses:
+        '202':
+          description: Telemetry records accepted for processing.
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '429':
+          description: Rate limit exceeded.
+    delete:
+      operationId: deleteMetricTelemetry
+      summary: Delete unit metric telemetry records
+      description: >-
+        Deletes any data within the appropriate stream that matches the
+        supplied properties. Timestamp is minimally required.
+      tags:
+        - Unit Metric Telemetry
+      parameters:
+        - name: stream_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the telemetry stream.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timestamp:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the records to delete.
+                granularity:
+                  type: string
+                  enum:
+                    - HOURLY
+                    - DAILY
+                    - MONTHLY
+                  description: Granularity of the records to delete.
+              required:
+                - timestamp
+      responses:
+        '200':
+          description: Records deleted successfully.
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+  /v1/telemetry/{stream_name}:
+    delete:
+      operationId: deleteMetricTelemetryStream
+      summary: Delete a unit metric telemetry stream
+      description: Deletes an entire telemetry stream and all associated data.
+      tags:
+        - Unit Metric Telemetry
+      parameters:
+        - name: stream_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the telemetry stream to delete.
+      responses:
+        '204':
+          description: Stream deleted successfully.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '404':
+          description: Stream not found.
+  /v1/telemetry/allocation/{stream_name}/sum:
+    post:
+      operationId: postAllocationTelemetrySum
+      summary: Post allocation telemetry records (sum)
+      description: >-
+        Sends allocation telemetry data that will be summed with any existing
+        data at the same timestamp and granularity within the stream.
+      tags:
+        - Allocation Telemetry
+      parameters:
+        - name: stream_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the allocation telemetry stream.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                records:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AllocationTelemetryRecord'
+              required:
+                - records
+      responses:
+        '202':
+          description: Telemetry records accepted for processing.
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '429':
+          description: Rate limit exceeded.
+  /v1/telemetry/allocation/{stream_name}/replace:
+    post:
+      operationId: postAllocationTelemetryReplace
+      summary: Post allocation telemetry records (replace)
+      description: >-
+        Sends allocation telemetry data that will replace any existing data at
+        the same timestamp and granularity within the stream.
+      tags:
+        - Allocation Telemetry
+      parameters:
+        - name: stream_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the allocation telemetry stream.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                records:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AllocationTelemetryRecord'
+              required:
+                - records
+      responses:
+        '202':
+          description: Telemetry records accepted for processing.
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '429':
+          description: Rate limit exceeded.
+  /v1/telemetry/allocation/{stream_name}/delete:
+    post:
+      operationId: deleteAllocationTelemetry
+      summary: Delete allocation telemetry records
+      description: >-
+        Deletes any allocation data within the appropriate stream that matches
+        the supplied properties. Timestamp and granularity are minimally
+        required.
+      tags:
+        - Allocation Telemetry
+      parameters:
+        - name: stream_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the allocation telemetry stream.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timestamp:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the records to delete.
+                granularity:
+                  type: string
+                  enum:
+                    - HOURLY
+                    - DAILY
+                    - MONTHLY
+                  description: Granularity of the records to delete.
+              required:
+                - timestamp
+                - granularity
+      responses:
+        '200':
+          description: Records deleted successfully.
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+  /v2/connections/billing/anycost/{connection_id}/billing_drops:
+    post:
+      operationId: createAnyCostBillingDrop
+      summary: Create an AnyCost billing drop
+      description: >-
+        Sends cost data in Common Bill Format (CBF) to an AnyCost Stream
+        connection. The request body must fit within a 5MB JSON limit.
+      tags:
+        - AnyCost
+      parameters:
+        - name: connection_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the AnyCost Stream connection.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                billing_drops:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/BillingDrop'
+              required:
+                - billing_drops
+      responses:
+        '202':
+          description: Billing drop accepted for processing.
+        '400':
+          description: Bad request. Invalid CBF data.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '413':
+          description: Payload too large. Exceeds 5MB limit.
+        '429':
+          description: Rate limit exceeded.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: >-
+        API key for authentication. Include your API key directly in the
+        Authorization header.
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+          description: URL for the next page of results.
+        previous:
+          type: string
+          description: URL for the previous page of results.
+        total:
+          type: integer
+          description: Total number of results.
+    Insight:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the insight.
+        name:
+          type: string
+          description: Display name for the insight.
+        description:
+          type: string
+          description: Description of what the insight tracks.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the insight was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the insight was last updated.
+        filters:
+          type: object
+          additionalProperties: true
+          description: Filters applied to the insight.
+        group_by:
+          type: array
+          items:
+            type: string
+          description: Dimensions used for grouping.
+    InsightInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name for the insight.
+        description:
+          type: string
+          description: Description of what the insight tracks.
+        filters:
+          type: object
+          additionalProperties: true
+          description: Filters to apply to the insight.
+        group_by:
+          type: array
+          items:
+            type: string
+          description: Dimensions to group by.
+      required:
+        - name
+    Budget:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the budget.
+        name:
+          type: string
+          description: Display name for the budget.
+        amount:
+          type: number
+          format: double
+          description: Budget amount.
+        period:
+          type: string
+          enum:
+            - monthly
+            - quarterly
+            - annual
+          description: Budget period.
+        view_id:
+          type: string
+          description: Identifier for the linked View.
+        notifications:
+          type: array
+          items:
+            type: object
+            properties:
+              threshold:
+                type: number
+                format: double
+                description: Threshold percentage for notification.
+              recipients:
+                type: array
+                items:
+                  type: string
+                description: Email addresses for notification recipients.
+          description: Notification rules for the budget.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the budget was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the budget was last updated.
+    BudgetInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name for the budget.
+        amount:
+          type: number
+          format: double
+          description: Budget amount.
+        period:
+          type: string
+          enum:
+            - monthly
+            - quarterly
+            - annual
+          description: Budget period.
+        view_id:
+          type: string
+          description: Identifier for the linked View.
+        notifications:
+          type: array
+          items:
+            type: object
+            properties:
+              threshold:
+                type: number
+                format: double
+              recipients:
+                type: array
+                items:
+                  type: string
+          description: Notification rules for the budget.
+      required:
+        - name
+        - amount
+        - period
+    MetricTelemetryRecord:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp for the telemetry record.
+        value:
+          type: number
+          format: double
+          description: Numeric value for the metric.
+        granularity:
+          type: string
+          enum:
+            - HOURLY
+            - DAILY
+            - MONTHLY
+          description: Time granularity of the record.
+        filter:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value pairs for filtering and grouping.
+      required:
+        - timestamp
+        - value
+        - granularity
+    AllocationTelemetryRecord:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp for the telemetry record.
+        value:
+          type: number
+          format: double
+          description: Numeric value for the allocation.
+        granularity:
+          type: string
+          enum:
+            - HOURLY
+            - DAILY
+            - MONTHLY
+          description: Time granularity of the record.
+        element:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value pairs identifying the element being allocated.
+      required:
+        - timestamp
+        - value
+        - granularity
+    BillingDrop:
+      type: object
+      description: >-
+        Cost data in CloudZero Common Bill Format (CBF) for ingestion via
+        AnyCost Stream.
+      properties:
+        line_items:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+                description: Timestamp for the billing line item.
+              cost:
+                type: number
+                format: double
+                description: Cost amount for the line item.
+              service:
+                type: string
+                description: Service name associated with the cost.
+              description:
+                type: string
+                description: Description of the cost line item.
+              metadata:
+                type: object
+                additionalProperties:
+                  type: string
+                description: Additional metadata for the line item.
+            required:
+              - timestamp
+              - cost
+      required:
+        - line_items
