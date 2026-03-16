@@ -16,7 +16,7 @@ tags:
   - Telemetry
   - Budgets
 created: '2026-01-02'
-modified: '2026-03-14'
+modified: '2026-03-16'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/cloudzero/refs/heads/main/apis.yml
 specificationVersion: '0.19'
@@ -61,4 +61,4 @@ apis:
         url: json-ld/cloudzero-context.jsonld
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
