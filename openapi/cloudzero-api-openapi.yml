@@ -40,7 +40,7 @@ paths:
   /v2/billing/costs:
     post:
       operationId: getBillingCosts
-      summary: Get billing costs
+      summary: CloudZero Get billing costs
       description: >-
         Returns cost data according to the parameters passed in. Supports
         grouping by Account, Service, and other dimensions with various filters
@@ -135,7 +135,7 @@ paths:
   /v2/billing/dimensions:
     get:
       operationId: getBillingDimensions
-      summary: Get billing dimensions
+      summary: CloudZero Get billing dimensions
       description: >-
         Returns a list of dimensions available for use in the getBillingCosts
         API and in CostFormation.
@@ -170,7 +170,7 @@ paths:
   /v2/insights:
     get:
       operationId: getInsights
-      summary: Get all insights
+      summary: CloudZero Get all insights
       description: Returns a list of all insights.
       tags:
         - Insights
@@ -205,7 +205,7 @@ paths:
           description: Forbidden.
     post:
       operationId: createInsight
-      summary: Create a new insight
+      summary: CloudZero Create a new insight
       description: Creates a new insight for tracking cost anomalies and patterns.
       tags:
         - Insights
@@ -234,7 +234,7 @@ paths:
   /v2/insights/{insight_id}:
     get:
       operationId: getOneInsight
-      summary: Get a single insight
+      summary: CloudZero Get a single insight
       description: Returns a single insight by its identifier.
       tags:
         - Insights
@@ -263,7 +263,7 @@ paths:
           description: Insight not found.
     put:
       operationId: updateOneInsight
-      summary: Update an insight
+      summary: CloudZero Update an insight
       description: Updates an existing insight.
       tags:
         - Insights
@@ -300,7 +300,7 @@ paths:
           description: Insight not found.
     delete:
       operationId: deleteOneInsight
-      summary: Delete an insight
+      summary: CloudZero Delete an insight
       description: Deletes a single insight by its identifier.
       tags:
         - Insights
@@ -323,7 +323,7 @@ paths:
   /v2/budgets:
     get:
       operationId: getBudgets
-      summary: Get all budgets
+      summary: CloudZero Get all budgets
       description: Returns a list of all budgets.
       tags:
         - Budgets
@@ -358,7 +358,7 @@ paths:
           description: Forbidden.
     post:
       operationId: createBudget
-      summary: Create a new budget
+      summary: CloudZero Create a new budget
       description: >-
         Creates a new budget linked to a View for tracking spend against
         business metrics.
@@ -389,7 +389,7 @@ paths:
   /v2/budgets/{budget_id}:
     get:
       operationId: getOneBudget
-      summary: Get a single budget
+      summary: CloudZero Get a single budget
       description: Returns a single budget by its identifier.
       tags:
         - Budgets
@@ -418,7 +418,7 @@ paths:
           description: Budget not found.
     put:
       operationId: updateOneBudget
-      summary: Update a budget
+      summary: CloudZero Update a budget
       description: Updates an existing budget.
       tags:
         - Budgets
@@ -455,7 +455,7 @@ paths:
           description: Budget not found.
     delete:
       operationId: deleteOneBudget
-      summary: Delete a budget
+      summary: CloudZero Delete a budget
       description: Deletes a single budget by its identifier.
       tags:
         - Budgets
@@ -478,7 +478,7 @@ paths:
   /v1/telemetry/{stream_name}/records:
     post:
       operationId: postMetricTelemetry
-      summary: Post unit metric telemetry records
+      summary: CloudZero Post unit metric telemetry records
       description: >-
         Sends unit metric telemetry data related to your system operations.
         The stream name can be used in unit economics calculations.
@@ -515,7 +515,7 @@ paths:
           description: Rate limit exceeded.
     delete:
       operationId: deleteMetricTelemetry
-      summary: Delete unit metric telemetry records
+      summary: CloudZero Delete unit metric telemetry records
       description: >-
         Deletes any data within the appropriate stream that matches the
         supplied properties. Timestamp is minimally required.
@@ -558,7 +558,7 @@ paths:
   /v1/telemetry/{stream_name}:
     delete:
       operationId: deleteMetricTelemetryStream
-      summary: Delete a unit metric telemetry stream
+      summary: CloudZero Delete a unit metric telemetry stream
       description: Deletes an entire telemetry stream and all associated data.
       tags:
         - Unit Metric Telemetry
@@ -579,7 +579,7 @@ paths:
   /v1/telemetry/allocation/{stream_name}/sum:
     post:
       operationId: postAllocationTelemetrySum
-      summary: Post allocation telemetry records (sum)
+      summary: CloudZero Post allocation telemetry records (sum)
       description: >-
         Sends allocation telemetry data that will be summed with any existing
         data at the same timestamp and granularity within the stream.
@@ -617,7 +617,7 @@ paths:
   /v1/telemetry/allocation/{stream_name}/replace:
     post:
       operationId: postAllocationTelemetryReplace
-      summary: Post allocation telemetry records (replace)
+      summary: CloudZero Post allocation telemetry records (replace)
       description: >-
         Sends allocation telemetry data that will replace any existing data at
         the same timestamp and granularity within the stream.
@@ -655,7 +655,7 @@ paths:
   /v1/telemetry/allocation/{stream_name}/delete:
     post:
       operationId: deleteAllocationTelemetry
-      summary: Delete allocation telemetry records
+      summary: CloudZero Delete allocation telemetry records
       description: >-
         Deletes any allocation data within the appropriate stream that matches
         the supplied properties. Timestamp and granularity are minimally
@@ -700,7 +700,7 @@ paths:
   /v2/connections/billing/anycost/{connection_id}/billing_drops:
     post:
       operationId: createAnyCostBillingDrop
-      summary: Create an AnyCost billing drop
+      summary: CloudZero Create an AnyCost billing drop
       description: >-
         Sends cost data in Common Bill Format (CBF) to an AnyCost Stream
         connection. The request body must fit within a 5MB JSON limit.
