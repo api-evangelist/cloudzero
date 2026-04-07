@@ -18,16 +18,6 @@ servers:
 security:
   - apiKey: []
 tags:
-  - name: Billing
-    description: Retrieve cost and dimension data for billing analysis.
-  - name: Insights
-    description: Create, read, update, and delete cost insights.
-  - name: Budgets
-    description: Create, read, update, and delete budgets for cost tracking.
-  - name: Unit Metric Telemetry
-    description: >-
-      Send, edit, and delete unit metric telemetry data related to your
-      system operations.
   - name: Allocation Telemetry
     description: >-
       Send, edit, and delete allocation telemetry data for splitting cloud cost
@@ -36,6 +26,16 @@ tags:
     description: >-
       Ingest cost data from any source using the AnyCost Stream Adaptor and
       Common Bill Format (CBF).
+  - name: Billing
+    description: Retrieve cost and dimension data for billing analysis.
+  - name: Budgets
+    description: Create, read, update, and delete budgets for cost tracking.
+  - name: Insights
+    description: Create, read, update, and delete cost insights.
+  - name: Unit Metric Telemetry
+    description: >-
+      Send, edit, and delete unit metric telemetry data related to your
+      system operations.
 paths:
   /v2/billing/costs:
     post:
