@@ -1,0 +1,140 @@
+extends:
+  - spectral:oas
+
+# Spectral linting rules tuned for the CloudZero V2 REST API.
+# Validates conventions described at
+# https://docs.cloudzero.com/reference/introduction
+# - HTTPS only, API key authentication, JSON request/response,
+#   page/page_size pagination, and resource-oriented v1/v2 paths.
+rules:
+  cloudzero-info-contact:
+    description: API contact information must be present.
+    severity: error
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  cloudzero-info-license:
+    description: API license must be declared.
+    severity: warn
+    given: "$.info"
+    then:
+      field: license
+      function: truthy
+
+  cloudzero-server-https:
+    description: All server URLs must use HTTPS.
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  cloudzero-server-host:
+    description: Server URL must reference api.cloudzero.com.
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "api\\.cloudzero\\.com"
+
+  cloudzero-api-key-auth:
+    description: An apiKey security scheme must be defined.
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: truthy
+
+  cloudzero-operation-tags:
+    description: Every operation must declare at least one tag.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1
+
+  cloudzero-operation-summary:
+    description: Every operation must include a short summary.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  cloudzero-operation-id:
+    description: Every operation must declare a unique operationId.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  cloudzero-error-responses:
+    description: Mutating operations should declare 4xx error responses.
+    severity: warn
+    given: "$.paths[*][post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["400"]
+            - required: ["401"]
+            - required: ["403"]
+            - required: ["404"]
+            - required: ["422"]
+
+  cloudzero-pagination-page:
+    description: List endpoints should accept page and page_size query parameters.
+    severity: info
+    given: "$.paths[?(@property.match(/insights$|budgets$|costs$|dimensions$/))].get.parameters[*].name"
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - page
+          - page_size
+          - filter
+          - dimensions
+          - metrics
+          - start_date
+          - end_date
+
+  cloudzero-iso-date:
+    description: Date parameters and properties should use ISO 8601 (date or date-time).
+    severity: warn
+    given: "$..[?(@property === 'start_date' || @property === 'end_date')].schema"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            format:
+              type: string
+              enum:
+                - date
+                - date-time
+
+  cloudzero-currency-iso:
+    description: Currency fields should use ISO 4217 codes.
+    severity: warn
+    given: "$..[?(@property === 'currency')].schema"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            pattern:
+              type: string
+              enum:
+                - "^[A-Z]{3}$"
