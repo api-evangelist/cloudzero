@@ -1,0 +1,189 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: CloudZero
+providerId: cloudzero
+publisherName: CloudZero
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Budgets
+  - Cloud Cost Management
+  - Cost Allocation
+  - Cost Optimization
+  - FinOps
+  - Telemetry
+  - Unit Economics
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the CloudZero API surface. Provides a FOCUS-aligned mapping
+  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: CloudZero
+  ServiceCategory: Developer Tools / API
+  ProviderName: CloudZero
+  PublisherName: CloudZero
+  InvoiceIssuerName: CloudZero
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: CloudZero API
+    baseURL: https://api.cloudzero.com
+    tags:
+      - Billing
+      - Budgets
+      - Cloud Costs
+      - Cost Allocation
+      - FinOps
+      - Insights
+      - Telemetry
+      - Unit Economics
+    serviceName: CloudZero API
+    serviceCategory: API
+  - name: CloudZero Billing API
+    baseURL: https://api.cloudzero.com/v2/billing
+    tags:
+      - Billing
+      - Cost Reporting
+      - Dimensions
+    serviceName: CloudZero Billing API
+    serviceCategory: API
+  - name: CloudZero Insights API
+    baseURL: https://api.cloudzero.com/v2/insights
+    tags:
+      - Cost Optimization
+      - Insights
+      - Recommendations
+    serviceName: CloudZero Insights API
+    serviceCategory: API
+  - name: CloudZero Budgets API
+    baseURL: https://api.cloudzero.com/v2/budgets
+    tags:
+      - Alerts
+      - Budgets
+      - FinOps
+    serviceName: CloudZero Budgets API
+    serviceCategory: API
+  - name: CloudZero Allocation Telemetry API
+    baseURL: https://api.cloudzero.com/v1/telemetry/allocation
+    tags:
+      - Allocation
+      - Cost Splitting
+      - Telemetry
+    serviceName: CloudZero Allocation Telemetry API
+    serviceCategory: API
+  - name: CloudZero Unit Metric Telemetry API
+    baseURL: https://api.cloudzero.com/v1/telemetry
+    tags:
+      - Telemetry
+      - Unit Economics
+      - Unit Metrics
+    serviceName: CloudZero Unit Metric Telemetry API
+    serviceCategory: API
+  - name: CloudZero AnyCost API
+    baseURL: https://api.cloudzero.com/v2/connections/billing/anycost
+    tags:
+      - AnyCost
+      - Billing Drop
+      - CBF
+      - Common Bill Format
+      - Ingestion
+    serviceName: CloudZero AnyCost API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
