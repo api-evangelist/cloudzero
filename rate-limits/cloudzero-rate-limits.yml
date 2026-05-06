@@ -4,118 +4,40 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: CloudZero
 providerId: cloudzero
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Budgets
-  - Cloud Cost Management
-  - Cost Allocation
-  - Cost Optimization
   - FinOps
-  - Telemetry
-  - Unit Economics
+  - Cloud Cost Management
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the CloudZero API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+notes: CloudZero does not publish public rate-limit numbers for its REST API. Limits are enforced at the
+  account level and are documented in the product's authenticated developer portal. Treat the entry below
+  as an umbrella reference.
+description: CloudZero's REST API enforces per-account throttling and a fair-use ceiling. Specific TPS
+  / RPM numbers are not published on the public pricing or developer-marketing pages; they are documented
+  inside the authenticated console.
+sources:
+  - https://www.cloudzero.com/
+  - https://docs.cloudzero.com/
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - CloudZero API
-      - CloudZero Billing API
-      - CloudZero Insights API
-      - CloudZero Budgets API
-      - CloudZero Allocation Telemetry API
-      - CloudZero Unit Metric Telemetry API
-      - CloudZero AnyCost API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - CloudZero API
-      - CloudZero Billing API
-      - CloudZero Insights API
-      - CloudZero Budgets API
-      - CloudZero Allocation Telemetry API
-      - CloudZero Unit Metric Telemetry API
-      - CloudZero AnyCost API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - CloudZero API
-      - CloudZero Billing API
-      - CloudZero Insights API
-      - CloudZero Budgets API
-      - CloudZero Allocation Telemetry API
-      - CloudZero Unit Metric Telemetry API
-      - CloudZero AnyCost API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - CloudZero API
-      - CloudZero Billing API
-      - CloudZero Insights API
-      - CloudZero Budgets API
-      - CloudZero Allocation Telemetry API
-      - CloudZero Unit Metric Telemetry API
-      - CloudZero AnyCost API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - CloudZero API
-      - CloudZero Billing API
-      - CloudZero Insights API
-      - CloudZero Budgets API
-      - CloudZero Allocation Telemetry API
-      - CloudZero Unit Metric Telemetry API
-      - CloudZero AnyCost API
+  - name: Account-level throttling
+    scope: account
+    metric: varies
+    limit: see CloudZero developer docs (authenticated)
+    notes: Specific per-second / per-minute numbers are not published publicly. Authenticated users can
+      view live limits in the in-app docs.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
+  - name: Backoff strategy
+    description: On HTTP 429 responses honor any Retry-After header and back off with jitter before retrying.
+  - name: Fair use
+    description: Even on enterprise plans, sustained bursty usage that materially impacts shared infrastructure
       may be subject to fair-use throttling.
+  - name: Authenticated documentation
+    description: Live, account-specific rate limits are surfaced inside the CloudZero console; consult
+      the in-product developer documentation for current values.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

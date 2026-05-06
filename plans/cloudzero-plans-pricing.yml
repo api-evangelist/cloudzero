@@ -4,207 +4,69 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: CloudZero
 providerId: cloudzero
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Budgets
+  - FinOps
   - Cloud Cost Management
   - Cost Allocation
-  - Cost Optimization
-  - FinOps
-  - Telemetry
   - Unit Economics
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Telemetry
+notes: CloudZero does not publish dollar-figure pricing on its public pricing page. The vendor describes
+  its model as a steady, predictable tiered subscription with unlimited users; concrete pricing is gated
+  behind a contact form. The single contact-sales plan below preserves the API Commons Plans structure
+  without fabricating numbers.
+description: CloudZero is a cloud cost intelligence (FinOps) SaaS platform priced as a contact-sales tiered
+  subscription that scales with cloud spend ingested. Public pricing page does not list dollar values; pricing
+  is requested via form. Customer count of users is unlimited within a plan.
+sources:
+  - https://www.cloudzero.com/pricing/
 plans:
-  - id: cloudzero-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the CloudZero API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: cloudzero-platform
+    name: CloudZero Platform
+    type: subscription
+    description: Contact-sales tiered subscription. CloudZero markets a single platform offering with monthly
+      pricing that scales with cloud spend ingested and product modules enabled. Unlimited user seats.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Platform Subscription
+        name: platform_subscription
+        type: subscription
+        metric: month
+        limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://api.cloudzero.com
-          - https://api.cloudzero.com/v2/billing
-          - https://api.cloudzero.com/v2/insights
-          - https://api.cloudzero.com/v2/budgets
-          - https://api.cloudzero.com/v1/telemetry/allocation
-          - https://api.cloudzero.com/v1/telemetry
-          - https://api.cloudzero.com/v2/connections/billing/anycost
         unit: 1
-        price: '0.00'
+        price: contact sales
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.cloudzero.com
-          - https://api.cloudzero.com/v2/billing
-          - https://api.cloudzero.com/v2/insights
-          - https://api.cloudzero.com/v2/budgets
-          - https://api.cloudzero.com/v1/telemetry/allocation
-          - https://api.cloudzero.com/v1/telemetry
-          - https://api.cloudzero.com/v2/connections/billing/anycost
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: CloudZero API
-      - name: CloudZero Billing API
-      - name: CloudZero Insights API
-      - name: CloudZero Budgets API
-      - name: CloudZero Allocation Telemetry API
-      - name: CloudZero Unit Metric Telemetry API
-      - name: CloudZero AnyCost API
-  - id: cloudzero-pro
-    name: Professional
-    type: paid
-    description: Production tier for CloudZero. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.cloudzero.com
-          - https://api.cloudzero.com/v2/billing
-          - https://api.cloudzero.com/v2/insights
-          - https://api.cloudzero.com/v2/budgets
-          - https://api.cloudzero.com/v1/telemetry/allocation
-          - https://api.cloudzero.com/v1/telemetry
-          - https://api.cloudzero.com/v2/connections/billing/anycost
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.cloudzero.com
-          - https://api.cloudzero.com/v2/billing
-          - https://api.cloudzero.com/v2/insights
-          - https://api.cloudzero.com/v2/budgets
-          - https://api.cloudzero.com/v1/telemetry/allocation
-          - https://api.cloudzero.com/v1/telemetry
-          - https://api.cloudzero.com/v2/connections/billing/anycost
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: Cloud Spend Ingested
+        name: cloud_spend_ingested
         type: metered
-        metric: requests
+        metric: usd
         limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://api.cloudzero.com
-          - https://api.cloudzero.com/v2/billing
-          - https://api.cloudzero.com/v2/insights
-          - https://api.cloudzero.com/v2/budgets
-          - https://api.cloudzero.com/v1/telemetry/allocation
-          - https://api.cloudzero.com/v1/telemetry
-          - https://api.cloudzero.com/v2/connections/billing/anycost
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: see https://www.cloudzero.com/pricing/
         userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: CloudZero API
-      - name: CloudZero Billing API
-      - name: CloudZero Insights API
-      - name: CloudZero Budgets API
-      - name: CloudZero Allocation Telemetry API
-      - name: CloudZero Unit Metric Telemetry API
-      - name: CloudZero AnyCost API
-  - id: cloudzero-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for CloudZero. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: User Seats
+        name: user_seats
+        type: subscription
+        metric: seat
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.cloudzero.com
-          - https://api.cloudzero.com/v2/billing
-          - https://api.cloudzero.com/v2/insights
-          - https://api.cloudzero.com/v2/budgets
-          - https://api.cloudzero.com/v1/telemetry/allocation
-          - https://api.cloudzero.com/v1/telemetry
-          - https://api.cloudzero.com/v2/connections/billing/anycost
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.cloudzero.com
-          - https://api.cloudzero.com/v2/billing
-          - https://api.cloudzero.com/v2/insights
-          - https://api.cloudzero.com/v2/budgets
-          - https://api.cloudzero.com/v1/telemetry/allocation
-          - https://api.cloudzero.com/v1/telemetry
-          - https://api.cloudzero.com/v2/connections/billing/anycost
-        unit: 1
-        price: custom
+        price: included (unlimited)
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: CloudZero API
-      - name: CloudZero Billing API
-      - name: CloudZero Insights API
-      - name: CloudZero Budgets API
-      - name: CloudZero Allocation Telemetry API
-      - name: CloudZero Unit Metric Telemetry API
-      - name: CloudZero AnyCost API
+      - name: Cloud cost ingestion (AWS, Azure, GCP, Snowflake, Kubernetes, SaaS)
+      - name: Custom dashboards and reports
+      - name: Cost allocation (CostFormation)
+      - name: Anomaly detection
+      - name: Unit economics
+      - name: Budgets and forecasting
+      - name: Monthly FinOps Account Manager check-ins
+      - name: Unlimited users
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
