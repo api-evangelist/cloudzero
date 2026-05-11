@@ -197,6 +197,20 @@ common:
     url: https://www.cloudzero.com/terms-of-service/
   - type: Privacy
     url: https://www.cloudzero.com/privacy-policy/
+  - type: Integrations
+    url: https://www.cloudzero.com/integrations/
+integrations:
+  - name: Amazon Web Services
+  - name: Kubernetes
+  - name: Google Cloud Platform
+  - name: Anthropic
+  - name: Microsoft Azure
+  - name: MongoDB
+  - name: Snowflake
+  - name: OpenAI
+  - name: Datadog
+  - name: Databricks
+  - name: New Relic
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
