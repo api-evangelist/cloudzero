@@ -8,7 +8,7 @@ access: 3rd-Party
 position: Consumer
 specificationVersion: '0.19'
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-x-type: company
+kind: company
 tags:
   - Budgets
   - Cloud Cost Management
@@ -189,11 +189,11 @@ common:
     url: https://docs.cloudzero.com/
   - type: Pricing
     url: https://www.cloudzero.com/pricing/
-  - type: Status
+  - type: StatusPage
     url: https://status.cloudzero.com/
   - type: GitHub
     url: https://github.com/Cloudzero
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.cloudzero.com/terms-of-service/
   - type: Privacy
     url: https://www.cloudzero.com/privacy-policy/
