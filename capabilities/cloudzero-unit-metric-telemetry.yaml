@@ -1,0 +1,173 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CloudZero API — Unit Metric Telemetry
+  description: 'CloudZero API — Unit Metric Telemetry. 3 operations. Lead operation: CloudZero Delete a unit metric telemetry
+    stream. Self-contained Naftiko capability covering one Cloudzero business surface.'
+  tags:
+  - Cloudzero
+  - Unit Metric Telemetry
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDZERO_API_KEY: CLOUDZERO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudzero-unit-metric-telemetry
+    baseUri: https://api.cloudzero.com
+    description: CloudZero API — Unit Metric Telemetry business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-telemetry-stream_name
+      path: /v1/telemetry/{stream_name}
+      operations:
+      - name: deletemetrictelemetrystream
+        method: DELETE
+        description: CloudZero Delete a unit metric telemetry stream
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: stream_name
+          in: path
+          type: string
+          description: Name of the telemetry stream to delete.
+          required: true
+    - name: v1-telemetry-stream_name-records
+      path: /v1/telemetry/{stream_name}/records
+      operations:
+      - name: postmetrictelemetry
+        method: POST
+        description: CloudZero Post unit metric telemetry records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: stream_name
+          in: path
+          type: string
+          description: Name of the telemetry stream.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemetrictelemetry
+        method: DELETE
+        description: CloudZero Delete unit metric telemetry records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: stream_name
+          in: path
+          type: string
+          description: Name of the telemetry stream.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.CLOUDZERO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cloudzero-unit-metric-telemetry-rest
+    port: 8080
+    description: REST adapter for CloudZero API — Unit Metric Telemetry. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/telemetry/{stream-name}
+      name: v1-telemetry-stream-name
+      description: REST surface for v1-telemetry-stream_name.
+      operations:
+      - method: DELETE
+        name: deletemetrictelemetrystream
+        description: CloudZero Delete a unit metric telemetry stream
+        call: cloudzero-unit-metric-telemetry.deletemetrictelemetrystream
+        with:
+          stream_name: rest.stream_name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/telemetry/{stream-name}/records
+      name: v1-telemetry-stream-name-records
+      description: REST surface for v1-telemetry-stream_name-records.
+      operations:
+      - method: POST
+        name: postmetrictelemetry
+        description: CloudZero Post unit metric telemetry records
+        call: cloudzero-unit-metric-telemetry.postmetrictelemetry
+        with:
+          stream_name: rest.stream_name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemetrictelemetry
+        description: CloudZero Delete unit metric telemetry records
+        call: cloudzero-unit-metric-telemetry.deletemetrictelemetry
+        with:
+          stream_name: rest.stream_name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudzero-unit-metric-telemetry-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for CloudZero API — Unit Metric Telemetry. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: cloudzero-delete-unit-metric-telemetry
+      description: CloudZero Delete a unit metric telemetry stream
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloudzero-unit-metric-telemetry.deletemetrictelemetrystream
+      with:
+        stream_name: tools.stream_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cloudzero-post-unit-metric-telemetry
+      description: CloudZero Post unit metric telemetry records
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudzero-unit-metric-telemetry.postmetrictelemetry
+      with:
+        stream_name: tools.stream_name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cloudzero-delete-unit-metric-telemetry-2
+      description: CloudZero Delete unit metric telemetry records
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloudzero-unit-metric-telemetry.deletemetrictelemetry
+      with:
+        stream_name: tools.stream_name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

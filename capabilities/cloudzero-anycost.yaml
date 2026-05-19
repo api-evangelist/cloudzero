@@ -1,0 +1,89 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CloudZero API — AnyCost
+  description: 'CloudZero API — AnyCost. 1 operations. Lead operation: CloudZero Create an AnyCost billing drop. Self-contained
+    Naftiko capability covering one Cloudzero business surface.'
+  tags:
+  - Cloudzero
+  - AnyCost
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDZERO_API_KEY: CLOUDZERO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudzero-anycost
+    baseUri: https://api.cloudzero.com
+    description: CloudZero API — AnyCost business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-connections-billing-anycost-connection_id-billing_drops
+      path: /v2/connections/billing/anycost/{connection_id}/billing_drops
+      operations:
+      - name: createanycostbillingdrop
+        method: POST
+        description: CloudZero Create an AnyCost billing drop
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connection_id
+          in: path
+          type: string
+          description: Unique identifier for the AnyCost Stream connection.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.CLOUDZERO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cloudzero-anycost-rest
+    port: 8080
+    description: REST adapter for CloudZero API — AnyCost. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v2/connections/billing/anycost/{connection-id}/billing-drops
+      name: v2-connections-billing-anycost-connection-id-billing-drops
+      description: REST surface for v2-connections-billing-anycost-connection_id-billing_drops.
+      operations:
+      - method: POST
+        name: createanycostbillingdrop
+        description: CloudZero Create an AnyCost billing drop
+        call: cloudzero-anycost.createanycostbillingdrop
+        with:
+          connection_id: rest.connection_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudzero-anycost-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for CloudZero API — AnyCost. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: cloudzero-create-anycost-billing-drop
+      description: CloudZero Create an AnyCost billing drop
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudzero-anycost.createanycostbillingdrop
+      with:
+        connection_id: tools.connection_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

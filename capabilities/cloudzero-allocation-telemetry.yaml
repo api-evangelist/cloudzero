@@ -1,0 +1,187 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CloudZero API — Allocation Telemetry
+  description: 'CloudZero API — Allocation Telemetry. 3 operations. Lead operation: CloudZero Delete allocation telemetry
+    records. Self-contained Naftiko capability covering one Cloudzero business surface.'
+  tags:
+  - Cloudzero
+  - Allocation Telemetry
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDZERO_API_KEY: CLOUDZERO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudzero-allocation-telemetry
+    baseUri: https://api.cloudzero.com
+    description: CloudZero API — Allocation Telemetry business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-telemetry-allocation-stream_name-delete
+      path: /v1/telemetry/allocation/{stream_name}/delete
+      operations:
+      - name: deleteallocationtelemetry
+        method: POST
+        description: CloudZero Delete allocation telemetry records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: stream_name
+          in: path
+          type: string
+          description: Name of the allocation telemetry stream.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-telemetry-allocation-stream_name-replace
+      path: /v1/telemetry/allocation/{stream_name}/replace
+      operations:
+      - name: postallocationtelemetryreplace
+        method: POST
+        description: CloudZero Post allocation telemetry records (replace)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: stream_name
+          in: path
+          type: string
+          description: Name of the allocation telemetry stream.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-telemetry-allocation-stream_name-sum
+      path: /v1/telemetry/allocation/{stream_name}/sum
+      operations:
+      - name: postallocationtelemetrysum
+        method: POST
+        description: CloudZero Post allocation telemetry records (sum)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: stream_name
+          in: path
+          type: string
+          description: Name of the allocation telemetry stream.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.CLOUDZERO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cloudzero-allocation-telemetry-rest
+    port: 8080
+    description: REST adapter for CloudZero API — Allocation Telemetry. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/telemetry/allocation/{stream-name}/delete
+      name: v1-telemetry-allocation-stream-name-delete
+      description: REST surface for v1-telemetry-allocation-stream_name-delete.
+      operations:
+      - method: POST
+        name: deleteallocationtelemetry
+        description: CloudZero Delete allocation telemetry records
+        call: cloudzero-allocation-telemetry.deleteallocationtelemetry
+        with:
+          stream_name: rest.stream_name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/telemetry/allocation/{stream-name}/replace
+      name: v1-telemetry-allocation-stream-name-replace
+      description: REST surface for v1-telemetry-allocation-stream_name-replace.
+      operations:
+      - method: POST
+        name: postallocationtelemetryreplace
+        description: CloudZero Post allocation telemetry records (replace)
+        call: cloudzero-allocation-telemetry.postallocationtelemetryreplace
+        with:
+          stream_name: rest.stream_name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/telemetry/allocation/{stream-name}/sum
+      name: v1-telemetry-allocation-stream-name-sum
+      description: REST surface for v1-telemetry-allocation-stream_name-sum.
+      operations:
+      - method: POST
+        name: postallocationtelemetrysum
+        description: CloudZero Post allocation telemetry records (sum)
+        call: cloudzero-allocation-telemetry.postallocationtelemetrysum
+        with:
+          stream_name: rest.stream_name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudzero-allocation-telemetry-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for CloudZero API — Allocation Telemetry. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: cloudzero-delete-allocation-telemetry-records
+      description: CloudZero Delete allocation telemetry records
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudzero-allocation-telemetry.deleteallocationtelemetry
+      with:
+        stream_name: tools.stream_name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cloudzero-post-allocation-telemetry-records
+      description: CloudZero Post allocation telemetry records (replace)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudzero-allocation-telemetry.postallocationtelemetryreplace
+      with:
+        stream_name: tools.stream_name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cloudzero-post-allocation-telemetry-records-2
+      description: CloudZero Post allocation telemetry records (sum)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudzero-allocation-telemetry.postallocationtelemetrysum
+      with:
+        stream_name: tools.stream_name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
