@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Budget",
+  "title": "Budget",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the budget."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for the budget."
+    },
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "description": "Budget amount."
+    },
+    "period": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "quarterly",
+        "annual"
+      ],
+      "description": "Budget period."
+    },
+    "view_id": {
+      "type": "string",
+      "description": "Identifier for the linked View."
+    },
+    "notifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "format": "double",
+            "description": "Threshold percentage for notification."
+          },
+          "recipients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Email addresses for notification recipients."
+          }
+        }
+      },
+      "description": "Notification rules for the budget."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the budget was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the budget was last updated."
+    }
+  }
+}

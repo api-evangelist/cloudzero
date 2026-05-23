@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InsightInput",
+  "title": "InsightInput",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name for the insight."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what the insight tracks."
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Filters to apply to the insight."
+    },
+    "group_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Dimensions to group by."
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

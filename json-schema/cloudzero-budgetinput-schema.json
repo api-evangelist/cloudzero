@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BudgetInput",
+  "title": "BudgetInput",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name for the budget."
+    },
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "description": "Budget amount."
+    },
+    "period": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "quarterly",
+        "annual"
+      ],
+      "description": "Budget period."
+    },
+    "view_id": {
+      "type": "string",
+      "description": "Identifier for the linked View."
+    },
+    "notifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "format": "double"
+          },
+          "recipients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Notification rules for the budget."
+    }
+  },
+  "required": [
+    "name",
+    "amount",
+    "period"
+  ]
+}

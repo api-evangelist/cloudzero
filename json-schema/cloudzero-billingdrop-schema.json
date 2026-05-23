@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BillingDrop",
+  "title": "BillingDrop",
+  "type": "object",
+  "description": "Cost data in CloudZero Common Bill Format (CBF) for ingestion via AnyCost Stream.",
+  "properties": {
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp for the billing line item."
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "description": "Cost amount for the line item."
+          },
+          "service": {
+            "type": "string",
+            "description": "Service name associated with the cost."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the cost line item."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Additional metadata for the line item."
+          }
+        },
+        "required": [
+          "timestamp",
+          "cost"
+        ]
+      }
+    }
+  },
+  "required": [
+    "line_items"
+  ]
+}

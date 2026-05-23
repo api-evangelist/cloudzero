@@ -1,0 +1,247 @@
+{
+  "provider": "CloudZero",
+  "providerId": "cloudzero",
+  "kind": "json-structure",
+  "description": "Structural overview of the CloudZero API surface; extracted from openapi/.",
+  "schemaCount": 8,
+  "operationCount": 19,
+  "schemas": [
+    {
+      "name": "Pagination",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Insight",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "InsightInput",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "Budget",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "BudgetInput",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "name",
+        "amount",
+        "period"
+      ]
+    },
+    {
+      "name": "MetricTelemetryRecord",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "timestamp",
+        "value",
+        "granularity"
+      ]
+    },
+    {
+      "name": "AllocationTelemetryRecord",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "timestamp",
+        "value",
+        "granularity"
+      ]
+    },
+    {
+      "name": "BillingDrop",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "line_items"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/v2/billing/costs",
+      "operationId": "getBillingCosts",
+      "summary": "CloudZero Get billing costs",
+      "tags": [
+        "Billing"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/billing/dimensions",
+      "operationId": "getBillingDimensions",
+      "summary": "CloudZero Get billing dimensions",
+      "tags": [
+        "Billing"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/insights",
+      "operationId": "getInsights",
+      "summary": "CloudZero Get all insights",
+      "tags": [
+        "Insights"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/insights",
+      "operationId": "createInsight",
+      "summary": "CloudZero Create a new insight",
+      "tags": [
+        "Insights"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/insights/{insight_id}",
+      "operationId": "getOneInsight",
+      "summary": "CloudZero Get a single insight",
+      "tags": [
+        "Insights"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/v2/insights/{insight_id}",
+      "operationId": "updateOneInsight",
+      "summary": "CloudZero Update an insight",
+      "tags": [
+        "Insights"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v2/insights/{insight_id}",
+      "operationId": "deleteOneInsight",
+      "summary": "CloudZero Delete an insight",
+      "tags": [
+        "Insights"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/budgets",
+      "operationId": "getBudgets",
+      "summary": "CloudZero Get all budgets",
+      "tags": [
+        "Budgets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/budgets",
+      "operationId": "createBudget",
+      "summary": "CloudZero Create a new budget",
+      "tags": [
+        "Budgets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/budgets/{budget_id}",
+      "operationId": "getOneBudget",
+      "summary": "CloudZero Get a single budget",
+      "tags": [
+        "Budgets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/v2/budgets/{budget_id}",
+      "operationId": "updateOneBudget",
+      "summary": "CloudZero Update a budget",
+      "tags": [
+        "Budgets"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v2/budgets/{budget_id}",
+      "operationId": "deleteOneBudget",
+      "summary": "CloudZero Delete a budget",
+      "tags": [
+        "Budgets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/telemetry/{stream_name}/records",
+      "operationId": "postMetricTelemetry",
+      "summary": "CloudZero Post unit metric telemetry records",
+      "tags": [
+        "Unit Metric Telemetry"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v1/telemetry/{stream_name}/records",
+      "operationId": "deleteMetricTelemetry",
+      "summary": "CloudZero Delete unit metric telemetry records",
+      "tags": [
+        "Unit Metric Telemetry"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v1/telemetry/{stream_name}",
+      "operationId": "deleteMetricTelemetryStream",
+      "summary": "CloudZero Delete a unit metric telemetry stream",
+      "tags": [
+        "Unit Metric Telemetry"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/telemetry/allocation/{stream_name}/sum",
+      "operationId": "postAllocationTelemetrySum",
+      "summary": "CloudZero Post allocation telemetry records (sum)",
+      "tags": [
+        "Allocation Telemetry"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/telemetry/allocation/{stream_name}/replace",
+      "operationId": "postAllocationTelemetryReplace",
+      "summary": "CloudZero Post allocation telemetry records (replace)",
+      "tags": [
+        "Allocation Telemetry"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/telemetry/allocation/{stream_name}/delete",
+      "operationId": "deleteAllocationTelemetry",
+      "summary": "CloudZero Delete allocation telemetry records",
+      "tags": [
+        "Allocation Telemetry"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/connections/billing/anycost/{connection_id}/billing_drops",
+      "operationId": "createAnyCostBillingDrop",
+      "summary": "CloudZero Create an AnyCost billing drop",
+      "tags": [
+        "AnyCost"
+      ]
+    }
+  ]
+}

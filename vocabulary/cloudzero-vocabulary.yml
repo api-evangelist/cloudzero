@@ -1,0 +1,17 @@
+name: CloudZero Domain Vocabulary
+provider: CloudZero
+providerId: cloudzero
+description: Tag-derived vocabulary for the CloudZero API surface; sourced from openapi/ tags.
+terms:
+- term: Allocation Telemetry
+  description: Send, edit, and delete allocation telemetry data for splitting cloud cost data through custom allocation dimensions.
+- term: AnyCost
+  description: Ingest cost data from any source using the AnyCost Stream Adaptor and Common Bill Format (CBF).
+- term: Billing
+  description: Retrieve cost and dimension data for billing analysis.
+- term: Budgets
+  description: Create, read, update, and delete budgets for cost tracking.
+- term: Insights
+  description: Create, read, update, and delete cost insights.
+- term: Unit Metric Telemetry
+  description: Send, edit, and delete unit metric telemetry data related to your system operations.

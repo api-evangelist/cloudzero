@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AllocationTelemetryRecord",
+  "title": "AllocationTelemetryRecord",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp for the telemetry record."
+    },
+    "value": {
+      "type": "number",
+      "format": "double",
+      "description": "Numeric value for the allocation."
+    },
+    "granularity": {
+      "type": "string",
+      "enum": [
+        "HOURLY",
+        "DAILY",
+        "MONTHLY"
+      ],
+      "description": "Time granularity of the record."
+    },
+    "element": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Key-value pairs identifying the element being allocated."
+    }
+  },
+  "required": [
+    "timestamp",
+    "value",
+    "granularity"
+  ]
+}
