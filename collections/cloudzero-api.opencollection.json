@@ -1,0 +1,451 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CloudZero API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Get billing costs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v2/billing/costs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns cost data according to the parameters passed in. Supports grouping by Account, Service, and other dimensions with various filters and cost types."
+        },
+        {
+          "info": {
+            "name": "CloudZero Get billing dimensions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudzero.com/v2/billing/dimensions"
+          },
+          "docs": "Returns a list of dimensions available for use in the getBillingCosts API and in CostFormation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Insights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Get all insights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudzero.com/v2/insights",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all insights."
+        },
+        {
+          "info": {
+            "name": "CloudZero Create a new insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v2/insights",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new insight for tracking cost anomalies and patterns."
+        },
+        {
+          "info": {
+            "name": "CloudZero Get a single insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudzero.com/v2/insights/:insight_id",
+            "params": [
+              {
+                "name": "insight_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the insight."
+              }
+            ]
+          },
+          "docs": "Returns a single insight by its identifier."
+        },
+        {
+          "info": {
+            "name": "CloudZero Update an insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloudzero.com/v2/insights/:insight_id",
+            "params": [
+              {
+                "name": "insight_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the insight."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing insight."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete an insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloudzero.com/v2/insights/:insight_id",
+            "params": [
+              {
+                "name": "insight_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the insight."
+              }
+            ]
+          },
+          "docs": "Deletes a single insight by its identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Budgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Get all budgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudzero.com/v2/budgets",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all budgets."
+        },
+        {
+          "info": {
+            "name": "CloudZero Create a new budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v2/budgets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new budget linked to a View for tracking spend against business metrics."
+        },
+        {
+          "info": {
+            "name": "CloudZero Get a single budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudzero.com/v2/budgets/:budget_id",
+            "params": [
+              {
+                "name": "budget_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the budget."
+              }
+            ]
+          },
+          "docs": "Returns a single budget by its identifier."
+        },
+        {
+          "info": {
+            "name": "CloudZero Update a budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloudzero.com/v2/budgets/:budget_id",
+            "params": [
+              {
+                "name": "budget_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the budget."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing budget."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete a budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloudzero.com/v2/budgets/:budget_id",
+            "params": [
+              {
+                "name": "budget_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the budget."
+              }
+            ]
+          },
+          "docs": "Deletes a single budget by its identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unit Metric Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Post unit metric telemetry records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v1/telemetry/:stream_name/records",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends unit metric telemetry data related to your system operations. The stream name can be used in unit economics calculations."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete unit metric telemetry records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloudzero.com/v1/telemetry/:stream_name/records",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes any data within the appropriate stream that matches the supplied properties. Timestamp is minimally required."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete a unit metric telemetry stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloudzero.com/v1/telemetry/:stream_name",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the telemetry stream to delete."
+              }
+            ]
+          },
+          "docs": "Deletes an entire telemetry stream and all associated data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Allocation Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Post allocation telemetry records (sum)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v1/telemetry/allocation/:stream_name/sum",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the allocation telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends allocation telemetry data that will be summed with any existing data at the same timestamp and granularity within the stream."
+        },
+        {
+          "info": {
+            "name": "CloudZero Post allocation telemetry records (replace)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v1/telemetry/allocation/:stream_name/replace",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the allocation telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends allocation telemetry data that will replace any existing data at the same timestamp and granularity within the stream."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete allocation telemetry records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v1/telemetry/allocation/:stream_name/delete",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the allocation telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes any allocation data within the appropriate stream that matches the supplied properties. Timestamp and granularity are minimally required."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AnyCost",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Create an AnyCost billing drop",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v2/connections/billing/anycost/:connection_id/billing_drops",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the AnyCost Stream connection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends cost data in Common Bill Format (CBF) to an AnyCost Stream connection. The request body must fit within a 5MB JSON limit."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
