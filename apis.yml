@@ -7,7 +7,7 @@ type: Index
 access: 3rd-Party
 position: Consumer
 specificationVersion: '0.19'
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 kind: company
 tags:
   - Budgets
@@ -31,7 +31,7 @@ apis:
       unit metric and allocation telemetry data, and ingesting cost data from any source via the AnyCost framework.
     humanURL: https://docs.cloudzero.com/reference/introduction
     baseURL: https://api.cloudzero.com
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Billing
       - Budgets
@@ -70,7 +70,7 @@ apis:
       billed_cost). Pagination uses page and page_size query parameters.
     humanURL: https://docs.cloudzero.com/reference/billing
     baseURL: https://api.cloudzero.com/v2/billing
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Billing
       - Cost Reporting
@@ -86,7 +86,7 @@ apis:
       and estimated savings.
     humanURL: https://docs.cloudzero.com/reference/insights
     baseURL: https://api.cloudzero.com/v2/insights
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Cost Optimization
       - Insights
@@ -101,7 +101,7 @@ apis:
       /v2/budgets list, create, update, and delete budgets and surface current consumption against limits.
     humanURL: https://docs.cloudzero.com/reference/budgets
     baseURL: https://api.cloudzero.com/v2/budgets
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Alerts
       - Budgets
@@ -117,7 +117,7 @@ apis:
       operations against a named telemetry stream.
     humanURL: https://docs.cloudzero.com/reference/allocation-telemetry
     baseURL: https://api.cloudzero.com/v1/telemetry/allocation
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Allocation
       - Cost Splitting
@@ -133,7 +133,7 @@ apis:
       and replacing values for named streams.
     humanURL: https://docs.cloudzero.com/reference/unit-metric-telemetry
     baseURL: https://api.cloudzero.com/v1/telemetry
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Telemetry
       - Unit Economics
@@ -149,7 +149,7 @@ apis:
       alongside native AWS, Azure, and GCP integrations.
     humanURL: https://docs.cloudzero.com/reference/anycost
     baseURL: https://api.cloudzero.com/v2/connections/billing/anycost
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - AnyCost
       - Billing Drop
