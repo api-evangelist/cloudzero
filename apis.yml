@@ -180,7 +180,7 @@ common:
     url: https://www.cloudzero.com/privacy-policy/
   - type: Integrations
     url: https://www.cloudzero.com/integrations/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.cloudzero.com/llms.txt
 integrations:
   - name: Amazon Web Services
