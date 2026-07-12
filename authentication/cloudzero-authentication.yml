@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/cloudzero-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: API key for authentication. Include your API key directly in the Authorization
+    header.
+  sources:
+  - openapi/cloudzero-api-openapi.yml

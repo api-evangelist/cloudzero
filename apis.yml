@@ -160,6 +160,12 @@ apis:
       - type: Documentation
         url: https://docs.cloudzero.com/reference/anycost
 common:
+  - type: TrustCenter
+    url: security/cloudzero-trust-center.yml
+  - type: DomainSecurity
+    url: security/cloudzero-domain-security.yml
+  - type: Authentication
+    url: authentication/cloudzero-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/cloudzero
   - type: Website
@@ -182,6 +188,8 @@ common:
     url: https://www.cloudzero.com/integrations/
   - type: LlmsText
     url: https://docs.cloudzero.com/llms.txt
+  - type: Blog
+    url: https://www.cloudzero.com/feed
 integrations:
   - name: Amazon Web Services
   - name: Kubernetes
