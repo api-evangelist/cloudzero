@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: CloudZero Allocation Telemetry AnyCost API
+  description: The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.
+  version: 2.0.0
+  contact:
+    name: CloudZero
+    url: https://www.cloudzero.com/
+  termsOfService: https://www.cloudzero.com/terms-of-service
+servers:
+- url: https://api.cloudzero.com
+  description: CloudZero Production API
+security:
+- apiKey: []
+tags:
+- name: AnyCost
+  description: Ingest cost data from any source using the AnyCost Stream Adaptor and Common Bill Format (CBF).
+paths:
+  /v2/connections/billing/anycost/{connection_id}/billing_drops:
+    post:
+      operationId: createAnyCostBillingDrop
+      summary: CloudZero Create an AnyCost billing drop
+      description: Sends cost data in Common Bill Format (CBF) to an AnyCost Stream connection. The request body must fit within a 5MB JSON limit.
+      tags:
+      - AnyCost
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the AnyCost Stream connection.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                billing_drops:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/BillingDrop'
+              required:
+              - billing_drops
+      responses:
+        '202':
+          description: Billing drop accepted for processing.
+        '400':
+          description: Bad request. Invalid CBF data.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '413':
+          description: Payload too large. Exceeds 5MB limit.
+        '429':
+          description: Rate limit exceeded.
+components:
+  schemas:
+    BillingDrop:
+      type: object
+      description: Cost data in CloudZero Common Bill Format (CBF) for ingestion via AnyCost Stream.
+      properties:
+        line_items:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+                description: Timestamp for the billing line item.
+              cost:
+                type: number
+                format: double
+                description: Cost amount for the line item.
+              service:
+                type: string
+                description: Service name associated with the cost.
+              description:
+                type: string
+                description: Description of the cost line item.
+              metadata:
+                type: object
+                additionalProperties:
+                  type: string
+                description: Additional metadata for the line item.
+            required:
+            - timestamp
+            - cost
+      required:
+      - line_items
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: API key for authentication. Include your API key directly in the Authorization header.

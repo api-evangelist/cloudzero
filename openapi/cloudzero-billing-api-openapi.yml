@@ -1,0 +1,161 @@
+openapi: 3.1.0
+info:
+  title: CloudZero Allocation Telemetry Billing API
+  description: The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.
+  version: 2.0.0
+  contact:
+    name: CloudZero
+    url: https://www.cloudzero.com/
+  termsOfService: https://www.cloudzero.com/terms-of-service
+servers:
+- url: https://api.cloudzero.com
+  description: CloudZero Production API
+security:
+- apiKey: []
+tags:
+- name: Billing
+  description: Retrieve cost and dimension data for billing analysis.
+paths:
+  /v2/billing/costs:
+    post:
+      operationId: getBillingCosts
+      summary: CloudZero Get billing costs
+      description: Returns cost data according to the parameters passed in. Supports grouping by Account, Service, and other dimensions with various filters and cost types.
+      tags:
+      - Billing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start:
+                  type: string
+                  format: date-time
+                  description: Start date for the cost query.
+                end:
+                  type: string
+                  format: date-time
+                  description: End date for the cost query.
+                group_by:
+                  type: array
+                  items:
+                    type: string
+                  description: Dimensions to group costs by (e.g., Account, Service, Region).
+                filter:
+                  type: object
+                  description: Filters to apply to the cost query.
+                  additionalProperties: true
+                granularity:
+                  type: string
+                  enum:
+                  - daily
+                  - monthly
+                  - cumulative
+                  description: Time granularity for the cost data.
+                cost_type:
+                  type: string
+                  enum:
+                  - billed
+                  - discounted
+                  - discounted_amortized
+                  - amortized
+                  - invoiced_amortized
+                  - real
+                  - on_demand
+                  description: The type of cost data to return.
+              required:
+              - start
+              - end
+      responses:
+        '200':
+          description: Successful response with cost data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        group:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        cost:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              timestamp:
+                                type: string
+                                format: date-time
+                              value:
+                                type: number
+                                format: double
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '429':
+          description: Rate limit exceeded.
+  /v2/billing/dimensions:
+    get:
+      operationId: getBillingDimensions
+      summary: CloudZero Get billing dimensions
+      description: Returns a list of dimensions available for use in the getBillingCosts API and in CostFormation.
+      tags:
+      - Billing
+      responses:
+        '200':
+          description: Successful response with dimension data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the dimension.
+                        name:
+                          type: string
+                          description: Display name for the dimension.
+                        type:
+                          type: string
+                          description: The dimension type.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+components:
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+          description: URL for the next page of results.
+        previous:
+          type: string
+          description: URL for the previous page of results.
+        total:
+          type: integer
+          description: Total number of results.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: API key for authentication. Include your API key directly in the Authorization header.

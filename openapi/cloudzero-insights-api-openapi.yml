@@ -1,0 +1,240 @@
+openapi: 3.1.0
+info:
+  title: CloudZero Allocation Telemetry Insights API
+  description: The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.
+  version: 2.0.0
+  contact:
+    name: CloudZero
+    url: https://www.cloudzero.com/
+  termsOfService: https://www.cloudzero.com/terms-of-service
+servers:
+- url: https://api.cloudzero.com
+  description: CloudZero Production API
+security:
+- apiKey: []
+tags:
+- name: Insights
+  description: Create, read, update, and delete cost insights.
+paths:
+  /v2/insights:
+    get:
+      operationId: getInsights
+      summary: CloudZero Get all insights
+      description: Returns a list of all insights.
+      tags:
+      - Insights
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+        description: Page number for pagination.
+      - name: page_size
+        in: query
+        schema:
+          type: integer
+        description: Number of results per page.
+      responses:
+        '200':
+          description: Successful response with list of insights.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Insight'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+    post:
+      operationId: createInsight
+      summary: CloudZero Create a new insight
+      description: Creates a new insight for tracking cost anomalies and patterns.
+      tags:
+      - Insights
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsightInput'
+      responses:
+        '201':
+          description: Insight created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Insight'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+  /v2/insights/{insight_id}:
+    get:
+      operationId: getOneInsight
+      summary: CloudZero Get a single insight
+      description: Returns a single insight by its identifier.
+      tags:
+      - Insights
+      parameters:
+      - name: insight_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the insight.
+      responses:
+        '200':
+          description: Successful response with insight data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Insight'
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Insight not found.
+    put:
+      operationId: updateOneInsight
+      summary: CloudZero Update an insight
+      description: Updates an existing insight.
+      tags:
+      - Insights
+      parameters:
+      - name: insight_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the insight.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsightInput'
+      responses:
+        '200':
+          description: Insight updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Insight'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Insight not found.
+    delete:
+      operationId: deleteOneInsight
+      summary: CloudZero Delete an insight
+      description: Deletes a single insight by its identifier.
+      tags:
+      - Insights
+      parameters:
+      - name: insight_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the insight.
+      responses:
+        '204':
+          description: Insight deleted successfully.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Insight not found.
+components:
+  schemas:
+    Insight:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the insight.
+        name:
+          type: string
+          description: Display name for the insight.
+        description:
+          type: string
+          description: Description of what the insight tracks.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the insight was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the insight was last updated.
+        filters:
+          type: object
+          additionalProperties: true
+          description: Filters applied to the insight.
+        group_by:
+          type: array
+          items:
+            type: string
+          description: Dimensions used for grouping.
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+          description: URL for the next page of results.
+        previous:
+          type: string
+          description: URL for the previous page of results.
+        total:
+          type: integer
+          description: Total number of results.
+    InsightInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name for the insight.
+        description:
+          type: string
+          description: Description of what the insight tracks.
+        filters:
+          type: object
+          additionalProperties: true
+          description: Filters to apply to the insight.
+        group_by:
+          type: array
+          items:
+            type: string
+          description: Dimensions to group by.
+      required:
+      - name
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: API key for authentication. Include your API key directly in the Authorization header.

@@ -1,0 +1,274 @@
+openapi: 3.1.0
+info:
+  title: CloudZero Allocation Telemetry Budgets API
+  description: The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.
+  version: 2.0.0
+  contact:
+    name: CloudZero
+    url: https://www.cloudzero.com/
+  termsOfService: https://www.cloudzero.com/terms-of-service
+servers:
+- url: https://api.cloudzero.com
+  description: CloudZero Production API
+security:
+- apiKey: []
+tags:
+- name: Budgets
+  description: Create, read, update, and delete budgets for cost tracking.
+paths:
+  /v2/budgets:
+    get:
+      operationId: getBudgets
+      summary: CloudZero Get all budgets
+      description: Returns a list of all budgets.
+      tags:
+      - Budgets
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+        description: Page number for pagination.
+      - name: page_size
+        in: query
+        schema:
+          type: integer
+        description: Number of results per page.
+      responses:
+        '200':
+          description: Successful response with list of budgets.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Budget'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+    post:
+      operationId: createBudget
+      summary: CloudZero Create a new budget
+      description: Creates a new budget linked to a View for tracking spend against business metrics.
+      tags:
+      - Budgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BudgetInput'
+      responses:
+        '201':
+          description: Budget created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+  /v2/budgets/{budget_id}:
+    get:
+      operationId: getOneBudget
+      summary: CloudZero Get a single budget
+      description: Returns a single budget by its identifier.
+      tags:
+      - Budgets
+      parameters:
+      - name: budget_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the budget.
+      responses:
+        '200':
+          description: Successful response with budget data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Budget not found.
+    put:
+      operationId: updateOneBudget
+      summary: CloudZero Update a budget
+      description: Updates an existing budget.
+      tags:
+      - Budgets
+      parameters:
+      - name: budget_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the budget.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BudgetInput'
+      responses:
+        '200':
+          description: Budget updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Budget'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Budget not found.
+    delete:
+      operationId: deleteOneBudget
+      summary: CloudZero Delete a budget
+      description: Deletes a single budget by its identifier.
+      tags:
+      - Budgets
+      parameters:
+      - name: budget_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the budget.
+      responses:
+        '204':
+          description: Budget deleted successfully.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Budget not found.
+components:
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+          description: URL for the next page of results.
+        previous:
+          type: string
+          description: URL for the previous page of results.
+        total:
+          type: integer
+          description: Total number of results.
+    BudgetInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name for the budget.
+        amount:
+          type: number
+          format: double
+          description: Budget amount.
+        period:
+          type: string
+          enum:
+          - monthly
+          - quarterly
+          - annual
+          description: Budget period.
+        view_id:
+          type: string
+          description: Identifier for the linked View.
+        notifications:
+          type: array
+          items:
+            type: object
+            properties:
+              threshold:
+                type: number
+                format: double
+              recipients:
+                type: array
+                items:
+                  type: string
+          description: Notification rules for the budget.
+      required:
+      - name
+      - amount
+      - period
+    Budget:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the budget.
+        name:
+          type: string
+          description: Display name for the budget.
+        amount:
+          type: number
+          format: double
+          description: Budget amount.
+        period:
+          type: string
+          enum:
+          - monthly
+          - quarterly
+          - annual
+          description: Budget period.
+        view_id:
+          type: string
+          description: Identifier for the linked View.
+        notifications:
+          type: array
+          items:
+            type: object
+            properties:
+              threshold:
+                type: number
+                format: double
+                description: Threshold percentage for notification.
+              recipients:
+                type: array
+                items:
+                  type: string
+                description: Email addresses for notification recipients.
+          description: Notification rules for the budget.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the budget was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the budget was last updated.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: API key for authentication. Include your API key directly in the Authorization header.

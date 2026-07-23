@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  title: CloudZero Allocation Telemetry Unit Metric Telemetry API
+  description: The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.
+  version: 2.0.0
+  contact:
+    name: CloudZero
+    url: https://www.cloudzero.com/
+  termsOfService: https://www.cloudzero.com/terms-of-service
+servers:
+- url: https://api.cloudzero.com
+  description: CloudZero Production API
+security:
+- apiKey: []
+tags:
+- name: Unit Metric Telemetry
+  description: Send, edit, and delete unit metric telemetry data related to your system operations.
+paths:
+  /v1/telemetry/{stream_name}/records:
+    post:
+      operationId: postMetricTelemetry
+      summary: CloudZero Post unit metric telemetry records
+      description: Sends unit metric telemetry data related to your system operations. The stream name can be used in unit economics calculations.
+      tags:
+      - Unit Metric Telemetry
+      parameters:
+      - name: stream_name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Name of the telemetry stream.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                records:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/MetricTelemetryRecord'
+              required:
+              - records
+      responses:
+        '202':
+          description: Telemetry records accepted for processing.
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '429':
+          description: Rate limit exceeded.
+    delete:
+      operationId: deleteMetricTelemetry
+      summary: CloudZero Delete unit metric telemetry records
+      description: Deletes any data within the appropriate stream that matches the supplied properties. Timestamp is minimally required.
+      tags:
+      - Unit Metric Telemetry
+      parameters:
+      - name: stream_name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Name of the telemetry stream.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timestamp:
+                  type: string
+                  format: date-time
+                  description: Timestamp of the records to delete.
+                granularity:
+                  type: string
+                  enum:
+                  - HOURLY
+                  - DAILY
+                  - MONTHLY
+                  description: Granularity of the records to delete.
+              required:
+              - timestamp
+      responses:
+        '200':
+          description: Records deleted successfully.
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+  /v1/telemetry/{stream_name}:
+    delete:
+      operationId: deleteMetricTelemetryStream
+      summary: CloudZero Delete a unit metric telemetry stream
+      description: Deletes an entire telemetry stream and all associated data.
+      tags:
+      - Unit Metric Telemetry
+      parameters:
+      - name: stream_name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Name of the telemetry stream to delete.
+      responses:
+        '204':
+          description: Stream deleted successfully.
+        '401':
+          description: Unauthorized. Invalid or missing API key.
+        '404':
+          description: Stream not found.
+components:
+  schemas:
+    MetricTelemetryRecord:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp for the telemetry record.
+        value:
+          type: number
+          format: double
+          description: Numeric value for the metric.
+        granularity:
+          type: string
+          enum:
+          - HOURLY
+          - DAILY
+          - MONTHLY
+          description: Time granularity of the record.
+        filter:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value pairs for filtering and grouping.
+      required:
+      - timestamp
+      - value
+      - granularity
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: API key for authentication. Include your API key directly in the Authorization header.
