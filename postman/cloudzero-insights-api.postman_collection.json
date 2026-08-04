@@ -1,0 +1,1245 @@
+{
+  "info": {
+    "_postman_id": "40b71e0b-4e93-4552-85d5-0109d321255a",
+    "name": "CloudZero Allocation Telemetry Insights API",
+    "description": "The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.\n\nContact Support:\n Name: CloudZero",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:59.000Z",
+    "updatedAt": "2026-07-28T01:23:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-40b71e0b-4e93-4552-85d5-0109d321255a"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "insights",
+          "item": [
+            {
+              "name": "{insight_id}",
+              "item": [
+                {
+                  "name": "CloudZero Get a single insight",
+                  "id": "2b4c3648-bc15-4dce-81e8-24452aba2c71",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights",
+                        ":insight_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "237d0ca4-e66b-4e4c-9811-b5516f6fc173",
+                          "key": "insight_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the insight."
+                        }
+                      ]
+                    },
+                    "description": "Returns a single insight by its identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "a09f1677-be72-43df-9d61-46be011fed90",
+                      "name": "Successful response with insight data.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"filters\": {\n      \"sed5a3\": \"veniam in\",\n      \"occaecat_a01\": true,\n      \"voluptate5\": \"reprehenderit do ea aliqua\"\n    },\n    \"group_by\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-a09f1677-be72-43df-9d61-46be011fed90"
+                    },
+                    {
+                      "id": "09dad0e4-7610-418b-907a-f10fb037b422",
+                      "name": "Unauthorized. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-09dad0e4-7610-418b-907a-f10fb037b422"
+                    },
+                    {
+                      "id": "c998d108-2897-46e8-aa4e-8f6f32238956",
+                      "name": "Forbidden.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-c998d108-2897-46e8-aa4e-8f6f32238956"
+                    },
+                    {
+                      "id": "7d34814d-9613-430f-a804-9f701de58942",
+                      "name": "Insight not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-7d34814d-9613-430f-a804-9f701de58942"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-2b4c3648-bc15-4dce-81e8-24452aba2c71"
+                },
+                {
+                  "name": "CloudZero Update an insight",
+                  "id": "96921d59-094a-46d2-aed5-f4d453e9a8d9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights",
+                        ":insight_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c38730de-1a60-4935-9519-992926cc8c89",
+                          "key": "insight_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the insight."
+                        }
+                      ]
+                    },
+                    "description": "Updates an existing insight."
+                  },
+                  "response": [
+                    {
+                      "id": "060f5d34-8e8f-4efa-b425-a7252f9c8e78",
+                      "name": "Insight updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"filters\": {\n      \"sed5a3\": \"veniam in\",\n      \"occaecat_a01\": true,\n      \"voluptate5\": \"reprehenderit do ea aliqua\"\n    },\n    \"group_by\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-060f5d34-8e8f-4efa-b425-a7252f9c8e78"
+                    },
+                    {
+                      "id": "850d8b30-cba4-487e-be78-69cf51816602",
+                      "name": "Bad request.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-850d8b30-cba4-487e-be78-69cf51816602"
+                    },
+                    {
+                      "id": "319c02db-c079-4893-a4cc-f5ff80ae7030",
+                      "name": "Unauthorized. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-319c02db-c079-4893-a4cc-f5ff80ae7030"
+                    },
+                    {
+                      "id": "b2681345-fbed-49cb-b653-ec6911d9a98b",
+                      "name": "Forbidden.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-b2681345-fbed-49cb-b653-ec6911d9a98b"
+                    },
+                    {
+                      "id": "b718f8e2-5a11-4465-8153-a2ff6760519d",
+                      "name": "Insight not found.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-b718f8e2-5a11-4465-8153-a2ff6760519d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-96921d59-094a-46d2-aed5-f4d453e9a8d9"
+                },
+                {
+                  "name": "CloudZero Delete an insight",
+                  "id": "7f82e08a-755f-4b2a-b439-6f0665b1ee7f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights",
+                        ":insight_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8a3b97c0-464f-43be-84c6-60801f687836",
+                          "key": "insight_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the insight."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a single insight by its identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "c8240a80-8e4c-4fa2-b95e-0abbd5cba6d5",
+                      "name": "Insight deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-c8240a80-8e4c-4fa2-b95e-0abbd5cba6d5"
+                    },
+                    {
+                      "id": "026be124-aca4-46fd-96d5-cc1a3891e8af",
+                      "name": "Unauthorized. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-026be124-aca4-46fd-96d5-cc1a3891e8af"
+                    },
+                    {
+                      "id": "7ffc4a0e-4356-4378-ad45-679e72df3b46",
+                      "name": "Forbidden.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-7ffc4a0e-4356-4378-ad45-679e72df3b46"
+                    },
+                    {
+                      "id": "36e79d45-47a5-4822-a401-c4116953780a",
+                      "name": "Insight not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/insights/:insight_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "insights",
+                            ":insight_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "insight_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:00.000Z",
+                      "updatedAt": "2026-07-28T01:23:00.000Z",
+                      "uid": "35240-36e79d45-47a5-4822-a401-c4116953780a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-7f82e08a-755f-4b2a-b439-6f0665b1ee7f"
+                }
+              ],
+              "id": "1bb7bf47-b8d7-4b7d-a893-64503d2e40ea",
+              "createdAt": "2026-07-28T01:23:00.000Z",
+              "updatedAt": "2026-07-28T01:23:00.000Z",
+              "uid": "35240-1bb7bf47-b8d7-4b7d-a893-64503d2e40ea"
+            },
+            {
+              "name": "CloudZero Get all insights",
+              "id": "e3d7bdd8-ee07-4b3d-b0ca-fe437c563fda",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/insights?page=<integer>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "insights"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of all insights."
+              },
+              "response": [
+                {
+                  "id": "36dd8cb1-76a9-43fe-812f-296d72972cf9",
+                  "name": "Successful response with list of insights.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights?page=<integer>&page_size=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "page_size",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"filters\": {\n        \"id979\": 197328\n      },\n      \"group_by\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"filters\": {\n        \"aute_5\": \"dolor non dolore\",\n        \"Utdf3\": \"amet dolor nost\"\n      },\n      \"group_by\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-36dd8cb1-76a9-43fe-812f-296d72972cf9"
+                },
+                {
+                  "id": "29952e38-63ba-45cd-863d-28dd98d54a75",
+                  "name": "Unauthorized. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights?page=<integer>&page_size=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "page_size",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-29952e38-63ba-45cd-863d-28dd98d54a75"
+                },
+                {
+                  "id": "09001ab9-e010-4663-bc40-b9bcca1b4032",
+                  "name": "Forbidden.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights?page=<integer>&page_size=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "page_size",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-09001ab9-e010-4663-bc40-b9bcca1b4032"
+                }
+              ],
+              "createdAt": "2026-07-28T01:23:00.000Z",
+              "updatedAt": "2026-07-28T01:23:00.000Z",
+              "uid": "35240-e3d7bdd8-ee07-4b3d-b0ca-fe437c563fda"
+            },
+            {
+              "name": "CloudZero Create a new insight",
+              "id": "541600e7-9a0f-4386-b8a1-e7bff78cdc0d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/insights",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "insights"
+                  ]
+                },
+                "description": "Creates a new insight for tracking cost anomalies and patterns."
+              },
+              "response": [
+                {
+                  "id": "60773bae-5a44-46bf-9919-149a17aa3f54",
+                  "name": "Insight created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"filters\": {\n      \"sed5a3\": \"veniam in\",\n      \"occaecat_a01\": true,\n      \"voluptate5\": \"reprehenderit do ea aliqua\"\n    },\n    \"group_by\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-60773bae-5a44-46bf-9919-149a17aa3f54"
+                },
+                {
+                  "id": "d92b8241-a997-42bb-84f1-db1c7e135432",
+                  "name": "Bad request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-d92b8241-a997-42bb-84f1-db1c7e135432"
+                },
+                {
+                  "id": "d53a7ada-65fc-4972-997c-7baa45ba335a",
+                  "name": "Unauthorized. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-d53a7ada-65fc-4972-997c-7baa45ba335a"
+                },
+                {
+                  "id": "07126010-af13-4a7f-a639-4e299462bde1",
+                  "name": "Forbidden.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": {\n    \"et_dd\": false,\n    \"laborum_24\": -60431847\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/insights",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "insights"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:23:00.000Z",
+                  "updatedAt": "2026-07-28T01:23:00.000Z",
+                  "uid": "35240-07126010-af13-4a7f-a639-4e299462bde1"
+                }
+              ],
+              "createdAt": "2026-07-28T01:23:00.000Z",
+              "updatedAt": "2026-07-28T01:23:00.000Z",
+              "uid": "35240-541600e7-9a0f-4386-b8a1-e7bff78cdc0d"
+            }
+          ],
+          "id": "325c0fe9-8be2-475c-84c8-537574ccb317",
+          "createdAt": "2026-07-28T01:23:00.000Z",
+          "updatedAt": "2026-07-28T01:23:00.000Z",
+          "uid": "35240-325c0fe9-8be2-475c-84c8-537574ccb317"
+        }
+      ],
+      "id": "327c778b-c5e1-4f3f-ba0c-a1f5ee7d514a",
+      "createdAt": "2026-07-28T01:23:00.000Z",
+      "updatedAt": "2026-07-28T01:23:00.000Z",
+      "uid": "35240-327c778b-c5e1-4f3f-ba0c-a1f5ee7d514a"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudzero.com"
+    }
+  ]
+}

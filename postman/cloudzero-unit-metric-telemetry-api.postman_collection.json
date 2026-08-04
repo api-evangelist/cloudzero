@@ -1,0 +1,721 @@
+{
+  "info": {
+    "_postman_id": "6e441b97-a077-4c8d-ae6e-0dd042b85005",
+    "name": "CloudZero Allocation Telemetry Unit Metric Telemetry API",
+    "description": "The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.\n\nContact Support:\n Name: CloudZero",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:23:00.000Z",
+    "updatedAt": "2026-07-28T01:23:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e441b97-a077-4c8d-ae6e-0dd042b85005"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "telemetry",
+          "item": [
+            {
+              "name": "{stream_name}",
+              "item": [
+                {
+                  "name": "records",
+                  "item": [
+                    {
+                      "name": "CloudZero Post unit metric telemetry records",
+                      "id": "de1729fd-50cc-41bc-a056-8a4536d0231a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"records\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"HOURLY\",\n      \"filter\": {\n        \"dolore_e12\": \"<string>\"\n      }\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"MONTHLY\",\n      \"filter\": {\n        \"occaecatf5\": \"<string>\",\n        \"et_bba\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "telemetry",
+                            ":stream_name",
+                            "records"
+                          ],
+                          "variable": [
+                            {
+                              "id": "66d2dab9-4ee2-4f6b-8fc5-0f3f5c82d1af",
+                              "key": "stream_name",
+                              "value": "<string>",
+                              "description": "(Required) Name of the telemetry stream."
+                            }
+                          ]
+                        },
+                        "description": "Sends unit metric telemetry data related to your system operations. The stream name can be used in unit economics calculations."
+                      },
+                      "response": [
+                        {
+                          "id": "3a5d655f-4349-47ca-9803-8de1f7001f76",
+                          "name": "Telemetry records accepted for processing.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"records\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"HOURLY\",\n      \"filter\": {\n        \"dolore_e12\": \"<string>\"\n      }\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"MONTHLY\",\n      \"filter\": {\n        \"occaecatf5\": \"<string>\",\n        \"et_bba\": \"<string>\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "telemetry",
+                                ":stream_name",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "stream_name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Accepted",
+                          "code": 202,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-3a5d655f-4349-47ca-9803-8de1f7001f76"
+                        },
+                        {
+                          "id": "2bd416f3-d8a4-4b37-a47a-56b000e980f4",
+                          "name": "Bad request.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"records\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"HOURLY\",\n      \"filter\": {\n        \"dolore_e12\": \"<string>\"\n      }\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"MONTHLY\",\n      \"filter\": {\n        \"occaecatf5\": \"<string>\",\n        \"et_bba\": \"<string>\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "telemetry",
+                                ":stream_name",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "stream_name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-2bd416f3-d8a4-4b37-a47a-56b000e980f4"
+                        },
+                        {
+                          "id": "718b1b40-28ad-4ff7-9a9d-2f837ccf9791",
+                          "name": "Unauthorized. Invalid or missing API key.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"records\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"HOURLY\",\n      \"filter\": {\n        \"dolore_e12\": \"<string>\"\n      }\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"MONTHLY\",\n      \"filter\": {\n        \"occaecatf5\": \"<string>\",\n        \"et_bba\": \"<string>\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "telemetry",
+                                ":stream_name",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "stream_name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-718b1b40-28ad-4ff7-9a9d-2f837ccf9791"
+                        },
+                        {
+                          "id": "7c72173e-83bd-4c4f-ba48-d4036724837f",
+                          "name": "Rate limit exceeded.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"records\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"HOURLY\",\n      \"filter\": {\n        \"dolore_e12\": \"<string>\"\n      }\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<double>\",\n      \"granularity\": \"MONTHLY\",\n      \"filter\": {\n        \"occaecatf5\": \"<string>\",\n        \"et_bba\": \"<string>\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "telemetry",
+                                ":stream_name",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "stream_name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-7c72173e-83bd-4c4f-ba48-d4036724837f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:23:01.000Z",
+                      "updatedAt": "2026-07-28T01:23:01.000Z",
+                      "uid": "35240-de1729fd-50cc-41bc-a056-8a4536d0231a"
+                    },
+                    {
+                      "name": "CloudZero Delete unit metric telemetry records",
+                      "id": "e3850c1d-a3d7-4969-984e-2b688a213b2f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"timestamp\": \"<dateTime>\",\n  \"granularity\": \"MONTHLY\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "telemetry",
+                            ":stream_name",
+                            "records"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7f1694b1-b0c4-43cc-973e-5aa15bcf055e",
+                              "key": "stream_name",
+                              "value": "<string>",
+                              "description": "(Required) Name of the telemetry stream."
+                            }
+                          ]
+                        },
+                        "description": "Deletes any data within the appropriate stream that matches the supplied properties. Timestamp is minimally required."
+                      },
+                      "response": [
+                        {
+                          "id": "0ea93b8e-84c0-47dd-8471-e9fc630cdeeb",
+                          "name": "Records deleted successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"timestamp\": \"<dateTime>\",\n  \"granularity\": \"MONTHLY\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "telemetry",
+                                ":stream_name",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "stream_name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-0ea93b8e-84c0-47dd-8471-e9fc630cdeeb"
+                        },
+                        {
+                          "id": "740f8388-a6c6-458b-8195-60801779d49f",
+                          "name": "Bad request.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"timestamp\": \"<dateTime>\",\n  \"granularity\": \"MONTHLY\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "telemetry",
+                                ":stream_name",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "stream_name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-740f8388-a6c6-458b-8195-60801779d49f"
+                        },
+                        {
+                          "id": "91753bf2-68b0-45da-a705-89fe13e27c50",
+                          "name": "Unauthorized. Invalid or missing API key.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"timestamp\": \"<dateTime>\",\n  \"granularity\": \"MONTHLY\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/telemetry/:stream_name/records",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "telemetry",
+                                ":stream_name",
+                                "records"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "stream_name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:23:01.000Z",
+                          "updatedAt": "2026-07-28T01:23:01.000Z",
+                          "uid": "35240-91753bf2-68b0-45da-a705-89fe13e27c50"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:23:01.000Z",
+                      "updatedAt": "2026-07-28T01:23:01.000Z",
+                      "uid": "35240-e3850c1d-a3d7-4969-984e-2b688a213b2f"
+                    }
+                  ],
+                  "id": "980814ed-3f18-40a1-9bb7-aed2f88e7521",
+                  "createdAt": "2026-07-28T01:23:01.000Z",
+                  "updatedAt": "2026-07-28T01:23:01.000Z",
+                  "uid": "35240-980814ed-3f18-40a1-9bb7-aed2f88e7521"
+                },
+                {
+                  "name": "CloudZero Delete a unit metric telemetry stream",
+                  "id": "8cc2cc89-3287-49a7-a011-5646707524d1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/telemetry/:stream_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "telemetry",
+                        ":stream_name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ccbebb4f-346a-472f-97e8-d6df51359447",
+                          "key": "stream_name",
+                          "value": "<string>",
+                          "description": "(Required) Name of the telemetry stream to delete."
+                        }
+                      ]
+                    },
+                    "description": "Deletes an entire telemetry stream and all associated data."
+                  },
+                  "response": [
+                    {
+                      "id": "98a9c186-410a-4c5f-bdda-819e8dcd2f4d",
+                      "name": "Stream deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/telemetry/:stream_name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "telemetry",
+                            ":stream_name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "stream_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:01.000Z",
+                      "updatedAt": "2026-07-28T01:23:01.000Z",
+                      "uid": "35240-98a9c186-410a-4c5f-bdda-819e8dcd2f4d"
+                    },
+                    {
+                      "id": "4a46a607-293c-4e6a-872b-b216c69deab2",
+                      "name": "Unauthorized. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/telemetry/:stream_name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "telemetry",
+                            ":stream_name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "stream_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:01.000Z",
+                      "updatedAt": "2026-07-28T01:23:01.000Z",
+                      "uid": "35240-4a46a607-293c-4e6a-872b-b216c69deab2"
+                    },
+                    {
+                      "id": "ef69250b-0496-42ea-8d99-aa6022d770af",
+                      "name": "Stream not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/telemetry/:stream_name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "telemetry",
+                            ":stream_name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "stream_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:23:01.000Z",
+                      "updatedAt": "2026-07-28T01:23:01.000Z",
+                      "uid": "35240-ef69250b-0496-42ea-8d99-aa6022d770af"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:23:01.000Z",
+                  "updatedAt": "2026-07-28T01:23:01.000Z",
+                  "uid": "35240-8cc2cc89-3287-49a7-a011-5646707524d1"
+                }
+              ],
+              "id": "78f932c0-9888-4304-a442-d273ce8aed52",
+              "createdAt": "2026-07-28T01:23:01.000Z",
+              "updatedAt": "2026-07-28T01:23:01.000Z",
+              "uid": "35240-78f932c0-9888-4304-a442-d273ce8aed52"
+            }
+          ],
+          "id": "b2a6af38-230f-4636-80a5-95ddc39f121a",
+          "createdAt": "2026-07-28T01:23:01.000Z",
+          "updatedAt": "2026-07-28T01:23:01.000Z",
+          "uid": "35240-b2a6af38-230f-4636-80a5-95ddc39f121a"
+        }
+      ],
+      "id": "19cd23fa-4ed6-4a34-8713-f11af54045d3",
+      "createdAt": "2026-07-28T01:23:01.000Z",
+      "updatedAt": "2026-07-28T01:23:01.000Z",
+      "uid": "35240-19cd23fa-4ed6-4a34-8713-f11af54045d3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudzero.com"
+    }
+  ]
+}

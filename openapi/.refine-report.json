@@ -1,0 +1,24 @@
+{
+  "provider": "cloudzero",
+  "sources": [
+    "cloudzero-allocation-telemetry-api-openapi.yml",
+    "cloudzero-anycost-api-openapi.yml",
+    "cloudzero-billing-api-openapi.yml",
+    "cloudzero-budgets-api-openapi.yml",
+    "cloudzero-insights-api-openapi.yml",
+    "cloudzero-unit-metric-telemetry-api-openapi.yml"
+  ],
+  "outputs": [
+    "cloudzero-allocation-telemetry-api-openapi.yml",
+    "cloudzero-anycost-api-openapi.yml",
+    "cloudzero-billing-api-openapi.yml",
+    "cloudzero-budgets-api-openapi.yml",
+    "cloudzero-insights-api-openapi.yml",
+    "cloudzero-unit-metric-telemetry-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,433 @@
+{
+  "info": {
+    "_postman_id": "9477afc6-cddf-41b1-bf8c-e1fb93b45e0a",
+    "name": "CloudZero Allocation Telemetry AnyCost API",
+    "description": "The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.\n\nContact Support:\n Name: CloudZero",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:32.000Z",
+    "updatedAt": "2026-07-28T01:22:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9477afc6-cddf-41b1-bf8c-e1fb93b45e0a"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "connections",
+          "item": [
+            {
+              "name": "billing",
+              "item": [
+                {
+                  "name": "anycost",
+                  "item": [
+                    {
+                      "name": "{connection_id}",
+                      "item": [
+                        {
+                          "name": "billing_drops",
+                          "item": [
+                            {
+                              "name": "CloudZero Create an AnyCost billing drop",
+                              "id": "b82ac7ea-fd75-4ff5-b545-d7552c793e6f",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"ad_8\": \"<string>\",\n            \"est7b\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"enimc__\": \"<string>\",\n            \"laborum_1e\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"cupidatat_7\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"dolor_5\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/connections/billing/anycost/:connection_id/billing_drops",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "connections",
+                                    "billing",
+                                    "anycost",
+                                    ":connection_id",
+                                    "billing_drops"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "2f9f912c-79ce-4746-ad30-f5d447b4f65e",
+                                      "key": "connection_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Unique identifier for the AnyCost Stream connection."
+                                    }
+                                  ]
+                                },
+                                "description": "Sends cost data in Common Bill Format (CBF) to an AnyCost Stream connection. The request body must fit within a 5MB JSON limit."
+                              },
+                              "response": [
+                                {
+                                  "id": "46f15214-794b-4717-8f95-3d26c8596a16",
+                                  "name": "Billing drop accepted for processing.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"ad_8\": \"<string>\",\n            \"est7b\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"enimc__\": \"<string>\",\n            \"laborum_1e\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"cupidatat_7\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"dolor_5\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/connections/billing/anycost/:connection_id/billing_drops",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "connections",
+                                        "billing",
+                                        "anycost",
+                                        ":connection_id",
+                                        "billing_drops"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "connection_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Accepted",
+                                  "code": 202,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:22:33.000Z",
+                                  "updatedAt": "2026-07-28T01:22:33.000Z",
+                                  "uid": "35240-46f15214-794b-4717-8f95-3d26c8596a16"
+                                },
+                                {
+                                  "id": "cf0bad0c-c0ac-4b61-b7c6-a95d9b61b594",
+                                  "name": "Bad request. Invalid CBF data.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"ad_8\": \"<string>\",\n            \"est7b\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"enimc__\": \"<string>\",\n            \"laborum_1e\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"cupidatat_7\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"dolor_5\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/connections/billing/anycost/:connection_id/billing_drops",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "connections",
+                                        "billing",
+                                        "anycost",
+                                        ":connection_id",
+                                        "billing_drops"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "connection_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:22:33.000Z",
+                                  "updatedAt": "2026-07-28T01:22:33.000Z",
+                                  "uid": "35240-cf0bad0c-c0ac-4b61-b7c6-a95d9b61b594"
+                                },
+                                {
+                                  "id": "d387f4ba-2153-49e0-9093-c11bab7a19b4",
+                                  "name": "Unauthorized. Invalid or missing API key.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"ad_8\": \"<string>\",\n            \"est7b\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"enimc__\": \"<string>\",\n            \"laborum_1e\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"cupidatat_7\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"dolor_5\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/connections/billing/anycost/:connection_id/billing_drops",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "connections",
+                                        "billing",
+                                        "anycost",
+                                        ":connection_id",
+                                        "billing_drops"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "connection_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:22:33.000Z",
+                                  "updatedAt": "2026-07-28T01:22:33.000Z",
+                                  "uid": "35240-d387f4ba-2153-49e0-9093-c11bab7a19b4"
+                                },
+                                {
+                                  "id": "3c4f1d30-41da-49a9-9094-29fa014412c9",
+                                  "name": "Payload too large. Exceeds 5MB limit.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"ad_8\": \"<string>\",\n            \"est7b\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"enimc__\": \"<string>\",\n            \"laborum_1e\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"cupidatat_7\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"dolor_5\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/connections/billing/anycost/:connection_id/billing_drops",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "connections",
+                                        "billing",
+                                        "anycost",
+                                        ":connection_id",
+                                        "billing_drops"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "connection_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Request Entity Too Large",
+                                  "code": 413,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:22:33.000Z",
+                                  "updatedAt": "2026-07-28T01:22:33.000Z",
+                                  "uid": "35240-3c4f1d30-41da-49a9-9094-29fa014412c9"
+                                },
+                                {
+                                  "id": "b01b1090-4feb-440c-b542-72d476dac601",
+                                  "name": "Rate limit exceeded.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"ad_8\": \"<string>\",\n            \"est7b\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"enimc__\": \"<string>\",\n            \"laborum_1e\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"cupidatat_7\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"dolor_5\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/connections/billing/anycost/:connection_id/billing_drops",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "connections",
+                                        "billing",
+                                        "anycost",
+                                        ":connection_id",
+                                        "billing_drops"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "connection_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:22:33.000Z",
+                                  "updatedAt": "2026-07-28T01:22:33.000Z",
+                                  "uid": "35240-b01b1090-4feb-440c-b542-72d476dac601"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:22:33.000Z",
+                              "updatedAt": "2026-07-28T01:22:33.000Z",
+                              "uid": "35240-b82ac7ea-fd75-4ff5-b545-d7552c793e6f"
+                            }
+                          ],
+                          "id": "95004309-ea87-421e-81d9-849fbb8d1427",
+                          "createdAt": "2026-07-28T01:22:33.000Z",
+                          "updatedAt": "2026-07-28T01:22:33.000Z",
+                          "uid": "35240-95004309-ea87-421e-81d9-849fbb8d1427"
+                        }
+                      ],
+                      "id": "89a9e31e-e9f2-473e-b3ed-6a8e2dbf5786",
+                      "createdAt": "2026-07-28T01:22:33.000Z",
+                      "updatedAt": "2026-07-28T01:22:33.000Z",
+                      "uid": "35240-89a9e31e-e9f2-473e-b3ed-6a8e2dbf5786"
+                    }
+                  ],
+                  "id": "a462e1ea-3be9-4cb3-a6ef-32c6906f829a",
+                  "createdAt": "2026-07-28T01:22:33.000Z",
+                  "updatedAt": "2026-07-28T01:22:33.000Z",
+                  "uid": "35240-a462e1ea-3be9-4cb3-a6ef-32c6906f829a"
+                }
+              ],
+              "id": "0d0608f0-4d8e-4bda-a3c3-78cb3987deed",
+              "createdAt": "2026-07-28T01:22:33.000Z",
+              "updatedAt": "2026-07-28T01:22:33.000Z",
+              "uid": "35240-0d0608f0-4d8e-4bda-a3c3-78cb3987deed"
+            }
+          ],
+          "id": "7b25c81d-68d7-4ee2-8a68-1e35c3026e20",
+          "createdAt": "2026-07-28T01:22:33.000Z",
+          "updatedAt": "2026-07-28T01:22:33.000Z",
+          "uid": "35240-7b25c81d-68d7-4ee2-8a68-1e35c3026e20"
+        }
+      ],
+      "id": "5240a9b1-b084-4306-b70f-ff962ed4f29d",
+      "createdAt": "2026-07-28T01:22:33.000Z",
+      "updatedAt": "2026-07-28T01:22:33.000Z",
+      "uid": "35240-5240a9b1-b084-4306-b70f-ff962ed4f29d"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudzero.com"
+    }
+  ]
+}

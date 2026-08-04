@@ -1,0 +1,1245 @@
+{
+  "info": {
+    "_postman_id": "7d1ad86f-2e7c-4cda-9e9d-9b1ac318143a",
+    "name": "CloudZero Allocation Telemetry Budgets API",
+    "description": "The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.\n\nContact Support:\n Name: CloudZero",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:58.000Z",
+    "updatedAt": "2026-07-28T01:22:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7d1ad86f-2e7c-4cda-9e9d-9b1ac318143a"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "budgets",
+          "item": [
+            {
+              "name": "{budget_id}",
+              "item": [
+                {
+                  "name": "CloudZero Get a single budget",
+                  "id": "8882e5c5-d2c0-4c73-b1c9-472c09ccd7e8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets",
+                        ":budget_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "81b27418-d62f-4770-bb55-4639c77ec8dd",
+                          "key": "budget_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the budget."
+                        }
+                      ]
+                    },
+                    "description": "Returns a single budget by its identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "541834ef-2cfc-48b4-aea2-2c789259dc50",
+                      "name": "Successful response with budget data.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"amount\": \"<double>\",\n    \"period\": \"monthly\",\n    \"view_id\": \"<string>\",\n    \"notifications\": [\n      {\n        \"threshold\": \"<double>\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"threshold\": \"<double>\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-541834ef-2cfc-48b4-aea2-2c789259dc50"
+                    },
+                    {
+                      "id": "db248722-fa3a-4a04-b851-9b685d60dd6c",
+                      "name": "Unauthorized. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-db248722-fa3a-4a04-b851-9b685d60dd6c"
+                    },
+                    {
+                      "id": "66ae3d3e-d500-4718-945c-9d7356981ddb",
+                      "name": "Forbidden.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-66ae3d3e-d500-4718-945c-9d7356981ddb"
+                    },
+                    {
+                      "id": "094076a4-3553-4e44-b5a9-9559a3e11886",
+                      "name": "Budget not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-094076a4-3553-4e44-b5a9-9559a3e11886"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-8882e5c5-d2c0-4c73-b1c9-472c09ccd7e8"
+                },
+                {
+                  "name": "CloudZero Update a budget",
+                  "id": "8895ce0e-fad6-4a5d-a4da-fecef4393a1f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets",
+                        ":budget_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ea0b00d3-9be7-45b1-af1b-ae61a2228ac2",
+                          "key": "budget_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the budget."
+                        }
+                      ]
+                    },
+                    "description": "Updates an existing budget."
+                  },
+                  "response": [
+                    {
+                      "id": "d960ee52-fe9f-429f-a9c5-2b4f0c941600",
+                      "name": "Budget updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"amount\": \"<double>\",\n    \"period\": \"monthly\",\n    \"view_id\": \"<string>\",\n    \"notifications\": [\n      {\n        \"threshold\": \"<double>\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"threshold\": \"<double>\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-d960ee52-fe9f-429f-a9c5-2b4f0c941600"
+                    },
+                    {
+                      "id": "838df00d-7271-41c7-b4a4-766ba407b5e3",
+                      "name": "Bad request.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-838df00d-7271-41c7-b4a4-766ba407b5e3"
+                    },
+                    {
+                      "id": "f59317f3-9f4b-4066-970e-c11387d66492",
+                      "name": "Unauthorized. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-f59317f3-9f4b-4066-970e-c11387d66492"
+                    },
+                    {
+                      "id": "9d3cce42-f9ea-4299-a98c-518efd5d2fb2",
+                      "name": "Forbidden.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-9d3cce42-f9ea-4299-a98c-518efd5d2fb2"
+                    },
+                    {
+                      "id": "a1cf07c8-ca57-4502-b0b4-b6d4fd178dfa",
+                      "name": "Budget not found.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-a1cf07c8-ca57-4502-b0b4-b6d4fd178dfa"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-8895ce0e-fad6-4a5d-a4da-fecef4393a1f"
+                },
+                {
+                  "name": "CloudZero Delete a budget",
+                  "id": "9c498586-d587-4fb9-aebc-aa2e8f341bb4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets",
+                        ":budget_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "492e3c39-0f4b-492f-8607-f3726193609b",
+                          "key": "budget_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the budget."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a single budget by its identifier."
+                  },
+                  "response": [
+                    {
+                      "id": "ce719a2c-f07d-4b89-a873-d60d7e0225ff",
+                      "name": "Budget deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-ce719a2c-f07d-4b89-a873-d60d7e0225ff"
+                    },
+                    {
+                      "id": "41a293bf-d8bf-481c-818f-7f23509ab0c1",
+                      "name": "Unauthorized. Invalid or missing API key.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-41a293bf-d8bf-481c-818f-7f23509ab0c1"
+                    },
+                    {
+                      "id": "0c805579-922f-4fb1-ad39-7903241ffb89",
+                      "name": "Forbidden.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-0c805579-922f-4fb1-ad39-7903241ffb89"
+                    },
+                    {
+                      "id": "a69c2a40-cdc3-49f8-997d-03330ce5fb82",
+                      "name": "Budget not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/budgets/:budget_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "budgets",
+                            ":budget_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "budget_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:22:59.000Z",
+                      "updatedAt": "2026-07-28T01:22:59.000Z",
+                      "uid": "35240-a69c2a40-cdc3-49f8-997d-03330ce5fb82"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-9c498586-d587-4fb9-aebc-aa2e8f341bb4"
+                }
+              ],
+              "id": "4c8023ee-87f6-44a4-a375-50579be0473c",
+              "createdAt": "2026-07-28T01:22:59.000Z",
+              "updatedAt": "2026-07-28T01:22:59.000Z",
+              "uid": "35240-4c8023ee-87f6-44a4-a375-50579be0473c"
+            },
+            {
+              "name": "CloudZero Get all budgets",
+              "id": "cb5891f4-1716-47c2-a18f-da4f4bbe6030",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/budgets?page=<integer>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "budgets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of all budgets."
+              },
+              "response": [
+                {
+                  "id": "1236ea06-1698-443f-8cab-ef3902e483ac",
+                  "name": "Successful response with list of budgets.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets?page=<integer>&page_size=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "page_size",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"period\": \"quarterly\",\n      \"view_id\": \"<string>\",\n      \"notifications\": [\n        {\n          \"threshold\": \"<double>\",\n          \"recipients\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"threshold\": \"<double>\",\n          \"recipients\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"period\": \"annual\",\n      \"view_id\": \"<string>\",\n      \"notifications\": [\n        {\n          \"threshold\": \"<double>\",\n          \"recipients\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"threshold\": \"<double>\",\n          \"recipients\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-1236ea06-1698-443f-8cab-ef3902e483ac"
+                },
+                {
+                  "id": "a0a90481-8e5e-4d36-a990-403303c9b25d",
+                  "name": "Unauthorized. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets?page=<integer>&page_size=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "page_size",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-a0a90481-8e5e-4d36-a990-403303c9b25d"
+                },
+                {
+                  "id": "7cd7f385-0a63-4ca5-8e77-3958c2c35e44",
+                  "name": "Forbidden.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets?page=<integer>&page_size=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "page_size",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-7cd7f385-0a63-4ca5-8e77-3958c2c35e44"
+                }
+              ],
+              "createdAt": "2026-07-28T01:22:59.000Z",
+              "updatedAt": "2026-07-28T01:22:59.000Z",
+              "uid": "35240-cb5891f4-1716-47c2-a18f-da4f4bbe6030"
+            },
+            {
+              "name": "CloudZero Create a new budget",
+              "id": "a06a5bc8-7885-4d39-bf99-c818bc34f15d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/budgets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "budgets"
+                  ]
+                },
+                "description": "Creates a new budget linked to a View for tracking spend against business metrics."
+              },
+              "response": [
+                {
+                  "id": "2255365d-e2d1-4c55-894e-2a3d51a7d757",
+                  "name": "Budget created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"amount\": \"<double>\",\n    \"period\": \"monthly\",\n    \"view_id\": \"<string>\",\n    \"notifications\": [\n      {\n        \"threshold\": \"<double>\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"threshold\": \"<double>\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-2255365d-e2d1-4c55-894e-2a3d51a7d757"
+                },
+                {
+                  "id": "732961c0-01b3-44df-95d5-e32e14c2546c",
+                  "name": "Bad request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-732961c0-01b3-44df-95d5-e32e14c2546c"
+                },
+                {
+                  "id": "9572a653-c593-483c-9784-d364318a4fed",
+                  "name": "Unauthorized. Invalid or missing API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-9572a653-c593-483c-9784-d364318a4fed"
+                },
+                {
+                  "id": "7289b4e7-c1aa-467f-b777-0bdab57ac852",
+                  "name": "Forbidden.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"period\": \"quarterly\",\n  \"view_id\": \"<string>\",\n  \"notifications\": [\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"threshold\": \"<double>\",\n      \"recipients\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/budgets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "budgets"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:22:59.000Z",
+                  "updatedAt": "2026-07-28T01:22:59.000Z",
+                  "uid": "35240-7289b4e7-c1aa-467f-b777-0bdab57ac852"
+                }
+              ],
+              "createdAt": "2026-07-28T01:22:59.000Z",
+              "updatedAt": "2026-07-28T01:22:59.000Z",
+              "uid": "35240-a06a5bc8-7885-4d39-bf99-c818bc34f15d"
+            }
+          ],
+          "id": "c078542b-28a8-4620-80d2-851d412ba591",
+          "createdAt": "2026-07-28T01:22:59.000Z",
+          "updatedAt": "2026-07-28T01:22:59.000Z",
+          "uid": "35240-c078542b-28a8-4620-80d2-851d412ba591"
+        }
+      ],
+      "id": "178a2959-e3b0-46cf-8fa9-770dfe500024",
+      "createdAt": "2026-07-28T01:22:59.000Z",
+      "updatedAt": "2026-07-28T01:22:59.000Z",
+      "uid": "35240-178a2959-e3b0-46cf-8fa9-770dfe500024"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloudzero.com"
+    }
+  ]
+}
