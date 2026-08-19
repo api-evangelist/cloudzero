@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CloudZero Allocation Telemetry AnyCost API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AnyCost",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Create an AnyCost billing drop",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v2/connections/billing/anycost/:connection_id/billing_drops",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the AnyCost Stream connection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends cost data in Common Bill Format (CBF) to an AnyCost Stream connection. The request body must fit within a 5MB JSON limit."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

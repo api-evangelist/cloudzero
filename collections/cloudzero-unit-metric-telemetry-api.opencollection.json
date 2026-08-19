@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CloudZero Allocation Telemetry Unit Metric Telemetry API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Unit Metric Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Post unit metric telemetry records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v1/telemetry/:stream_name/records",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends unit metric telemetry data related to your system operations. The stream name can be used in unit economics calculations."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete unit metric telemetry records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloudzero.com/v1/telemetry/:stream_name/records",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes any data within the appropriate stream that matches the supplied properties. Timestamp is minimally required."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete a unit metric telemetry stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloudzero.com/v1/telemetry/:stream_name",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the telemetry stream to delete."
+              }
+            ]
+          },
+          "docs": "Deletes an entire telemetry stream and all associated data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

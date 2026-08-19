@@ -1,0 +1,222 @@
+# CloudZero Documentation Documentation
+
+> Documentation for CloudZero Documentation
+
+## Guides
+- [CloudZero Overview](https://docs.cloudzero.com/docs/cloudzero.md)
+- [Quickstart](https://docs.cloudzero.com/docs/getting-started.md)
+- [Navigating CloudZero](https://docs.cloudzero.com/docs/navigating-cloudzero.md)
+- [Explorer Overview](https://docs.cloudzero.com/docs/explorer.md)
+- [Grouping, Filtering, and Time Range](https://docs.cloudzero.com/docs/grouping-filtering-and-time-range.md)
+- [Views](https://docs.cloudzero.com/docs/views.md)
+- [Compare Costs and Trends Over Time](https://docs.cloudzero.com/docs/compare-periods.md)
+- [Anomalies in Explorer](https://docs.cloudzero.com/docs/engineering-activity-correlation.md)
+- [Viewing Usage Data in Explorer](https://docs.cloudzero.com/docs/viewing-usage-data-in-explorer.md)
+- [Kubernetes Efficiency Metrics in Explorer](https://docs.cloudzero.com/docs/k8s-usage-metrics.md)
+- [Overview of Dashboards with Analytics](https://docs.cloudzero.com/docs/dashboards-and-analytics.md)
+- [Creating and Editing Dashboards](https://docs.cloudzero.com/docs/edit-dashboard.md)
+- [Viewing Usage Data in Dashboards](https://docs.cloudzero.com/docs/viewing-usage-data.md)
+- [Unit Economics](https://docs.cloudzero.com/docs/unit-economics.md)
+- [Tutorial: Create a Unit Cost Dashboard](https://docs.cloudzero.com/docs/tutorial-calculate-unit-cost-metrics.md)
+- [Cost Types](https://docs.cloudzero.com/docs/cost-types.md)
+- [Automatic Recommendations with Optimize](https://docs.cloudzero.com/docs/optimize.md)
+- [Overview](https://docs.cloudzero.com/docs/overview.md)
+- [Recommendations](https://docs.cloudzero.com/docs/working-with-recommendations.md)
+- [Insights](https://docs.cloudzero.com/docs/insights.md)
+- [Recommendations for AWS](https://docs.cloudzero.com/docs/aws-recommendations.md)
+- [Recommendations for Azure](https://docs.cloudzero.com/docs/azure-recommendations.md)
+- [Recommendations for GCP](https://docs.cloudzero.com/docs/gcp-recommendations.md)
+- [Recommendations for Kubernetes](https://docs.cloudzero.com/docs/kubernetes-recommendations.md)
+- [Anomaly Detection](https://docs.cloudzero.com/docs/anomaly-detection.md)
+- [Configure Anomaly Notifications](https://docs.cloudzero.com/docs/configure-notifications.md)
+- [Budgets](https://docs.cloudzero.com/docs/budgets.md)
+- [Overview of AI Hub](https://docs.cloudzero.com/docs/analyze-spend-with-ai-hub.md)
+- [Set Up AI Hub](https://docs.cloudzero.com/docs/ai-getting-started.md)
+- [Choose the right model with Model Right Sizer](https://docs.cloudzero.com/docs/ai-model-right-sizer.md)
+- [API Key Authentication](https://docs.cloudzero.com/docs/ai-mcp-api-key-auth.md)
+- [AI Hub Troubleshooting](https://docs.cloudzero.com/docs/ai-troubleshooting.md)
+- [AI Hub Reference](https://docs.cloudzero.com/docs/ai-under-the-hood.md)
+- [MCP Server Reference](https://docs.cloudzero.com/docs/ai-mcp-server.md)
+- [Skills Reference](https://docs.cloudzero.com/docs/ai-skills.md)
+- [Overview of Cost Connections](https://docs.cloudzero.com/docs/connect-your-cost-data.md)
+- [Cloud Providers](https://docs.cloudzero.com/docs/cloud-providers.md)
+- [Connecting to AWS](https://docs.cloudzero.com/docs/aws.md)
+- [Manual Setup](https://docs.cloudzero.com/docs/manual-setup.md)
+- [Connect Resource Accounts at Scale](https://docs.cloudzero.com/docs/connect-resource-accounts-at-scale.md)
+- [Use AWS Tags in CloudZero](https://docs.cloudzero.com/docs/cost.md)
+- [Cost and Usage Report Requirements](https://docs.cloudzero.com/docs/validate-your-cost-and-usage-report.md)
+- [Update Your AWS Connection](https://docs.cloudzero.com/docs/connections-aws-updating-connections.md)
+- [AWS Permissions and Security](https://docs.cloudzero.com/docs/aws-permissions-and-security.md)
+- [Connecting to Azure](https://docs.cloudzero.com/docs/azure.md)
+- [Microsoft Customer Agreement (MCA)](https://docs.cloudzero.com/docs/connections-azure-mca.md)
+- [Enterprise Agreement (EA)](https://docs.cloudzero.com/docs/connections-azure-ea.md)
+- [Cloud Solution Provider (CSP)](https://docs.cloudzero.com/docs/connections-azure-csp.md)
+- [Connecting Azure Resource Metadata](https://docs.cloudzero.com/docs/connections-azure-resource.md)
+- [Azure Permissions and Security](https://docs.cloudzero.com/docs/azure-permissions-and-security.md)
+- [Connecting to GCP](https://docs.cloudzero.com/docs/gcp.md)
+- [GCP Recommender](https://docs.cloudzero.com/docs/connections-gcp-recommender.md)
+- [GCP Permissions and Security](https://docs.cloudzero.com/docs/gcp-permissions-and-security.md)
+- [Connecting to Oracle Cloud (OCI)](https://docs.cloudzero.com/docs/connecting-to-oracle-cloud.md)
+- [AI Platforms](https://docs.cloudzero.com/docs/ai-platforms.md)
+- [Connecting to Anthropic](https://docs.cloudzero.com/docs/connections-anthropic.md)
+- [Connecting to Cursor](https://docs.cloudzero.com/docs/connections-cursor.md)
+- [Connecting to OpenAI](https://docs.cloudzero.com/docs/connecting-to-openai.md)
+- [Real-Time AI Spend with AI Signals](https://docs.cloudzero.com/docs/real-time-ai-spend-with-ai-signals.md)
+- [SaaS Platforms](https://docs.cloudzero.com/docs/saas-platforms.md)
+- [Connecting to ClickHouse](https://docs.cloudzero.com/docs/connections-clickhouse.md)
+- [Connecting to Confluent Cloud](https://docs.cloudzero.com/docs/connecting-to-confluent.md)
+- [Connecting to Databricks](https://docs.cloudzero.com/docs/connections-databricks-v2.md)
+- [Connecting to Datadog](https://docs.cloudzero.com/docs/connections-datadog.md)
+- [Connecting to Elastic Cloud](https://docs.cloudzero.com/docs/connections-elastic-cloud.md)
+- [Connecting to Fastly](https://docs.cloudzero.com/docs/connecting-to-fastly.md)
+- [Connecting to GitHub](https://docs.cloudzero.com/docs/connections-github.md)
+- [Connecting to MongoDB](https://docs.cloudzero.com/docs/connections-mongodb-v2.md)
+- [Connecting to New Relic](https://docs.cloudzero.com/docs/connections-new-relic-v2.md)
+- [Connecting to Snowflake](https://docs.cloudzero.com/docs/connections-snowflake.md)
+- [Update a Legacy Snowflake Connection](https://docs.cloudzero.com/docs/connections-snowflake-updating-manual-connection.md)
+- [Connecting to Twilio](https://docs.cloudzero.com/docs/connections-twilio.md)
+- [Kubernetes](https://docs.cloudzero.com/docs/kubernetes.md)
+- [Install the CloudZero Kubernetes Agent](https://docs.cloudzero.com/docs/installation-of-cloudzero-agent-for-kubernetes.md)
+- [Manage Kubernetes Clusters](https://docs.cloudzero.com/docs/manage-kubernetes-clusters.md)
+- [Advanced Kubernetes Agent Configuration](https://docs.cloudzero.com/docs/k8s-advanced-configuration.md)
+- [Custom Cost Data Sources with AnyCost](https://docs.cloudzero.com/docs/custom-data-sources.md)
+- [Connect via REST API](https://docs.cloudzero.com/docs/anycost-stream-getting-started.md)
+- [Connect via S3 Bucket](https://docs.cloudzero.com/docs/anycost-bucket-getting-started.md)
+- [S3 Bucket Delivery Reference](https://docs.cloudzero.com/docs/anycost-bucket-delivery-reference.md)
+- [Common Bill Format (CBF) Reference](https://docs.cloudzero.com/docs/anycost-common-bill-format-cbf.md)
+- [Delete a Connection](https://docs.cloudzero.com/docs/disconnecting-connections.md)
+- [Overview of Cost Organization with Dimensions](https://docs.cloudzero.com/docs/organize-your-costs.md)
+- [How to Build a Dimension](https://docs.cloudzero.com/docs/dimensions.md)
+- [Allocate Visually with Dimension Studio](https://docs.cloudzero.com/docs/allocate-visually.md)
+- [Create a Grouping Dimension](https://docs.cloudzero.com/docs/create-grouping-dimension.md)
+- [Create an Allocation Dimension](https://docs.cloudzero.com/docs/create-allocation-dimension.md)
+- [Allocate through YAML with CostFormation](https://docs.cloudzero.com/docs/allocate-through-yaml.md)
+- [CostFormation Templates](https://docs.cloudzero.com/docs/dimension-patterns.md)
+- [CostFormation Reference](https://docs.cloudzero.com/docs/cfdl-reference.md)
+- [Default Dimension Definitions](https://docs.cloudzero.com/docs/default-dimension-definitions.md)
+- [VS Code Extension](https://docs.cloudzero.com/docs/vscode-extension.md)
+- [VS Code Extension: Advanced Usage](https://docs.cloudzero.com/docs/vscode-extension-advanced.md)
+- [Allocating Shared and Unknown Spend](https://docs.cloudzero.com/docs/splitting-shared-costs.md)
+- [Organize Dimensions with Namespaces](https://docs.cloudzero.com/docs/namespaces.md)
+- [Personal Settings](https://docs.cloudzero.com/docs/personal-settings.md)
+- [Try New Features with Labs](https://docs.cloudzero.com/docs/labs.md)
+- [Notifications](https://docs.cloudzero.com/docs/notifications.md)
+- [Security Overview](https://docs.cloudzero.com/docs/security.md)
+- [Single Sign-On](https://docs.cloudzero.com/docs/single-sign-on.md)
+- [SSO with Microsoft Entra ID (Azure AD)](https://docs.cloudzero.com/docs/how-to-connect-azure-active-directory.md)
+- [SSO with Okta](https://docs.cloudzero.com/docs/how-to-connect-okta.md)
+- [SSO with OpenID Connect](https://docs.cloudzero.com/docs/how-to-connect-openid-connect.md)
+- [SSO with SAML](https://docs.cloudzero.com/docs/how-to-connect-saml.md)
+- [Delete an SSO Integration](https://docs.cloudzero.com/docs/delete-an-sso-integration.md)
+- [Users & Permissions](https://docs.cloudzero.com/docs/users-and-permissions.md)
+- [View and Manage your Organization's Users](https://docs.cloudzero.com/docs/view-and-manage-your-organizations-users.md)
+- [View and Manage Roles](https://docs.cloudzero.com/docs/view-and-manage-roles.md)
+- [Manage Roles with SSO](https://docs.cloudzero.com/docs/manage-roles-with-sso.md)
+- [Filter by SSO Login Attribute](https://docs.cloudzero.com/docs/filter-by-sso-login-attribute.md)
+- [Namespace Access Control](https://docs.cloudzero.com/docs/namespace-access-control.md)
+- [App Integrations & Data Sharing](https://docs.cloudzero.com/docs/integrations.md)
+- [Track Work Items in Jira](https://docs.cloudzero.com/docs/jira-integration.md)
+- [Alerts in Slack](https://docs.cloudzero.com/docs/enabling-slack-integration.md)
+- [Query CloudZero Data in Snowflake](https://docs.cloudzero.com/docs/snowflake-data-shares.md)
+- [Send unit cost and allocation data](https://docs.cloudzero.com/docs/telemetry-streams.md)
+- [Send data through the UI as a CSV](https://docs.cloudzero.com/docs/send-via-csv.md)
+- [Send data through the API as JSON](https://docs.cloudzero.com/docs/send-via-api.md)
+- [Telemetry API examples](https://docs.cloudzero.com/docs/unit-metric-case-studies.md)
+- [Manage and troubleshoot streams](https://docs.cloudzero.com/docs/manage-streams.md)
+- [Manage Multiple Organizations](https://docs.cloudzero.com/docs/organization-management.md)
+- [Glossary](https://docs.cloudzero.com/docs/cloudzero-glossary.md)
+
+## API Reference
+- [Getting Started with the V2 API](https://docs.cloudzero.com/reference/introduction.md)
+- [Authorization](https://docs.cloudzero.com/reference/authorization.md)
+- [Filtering](https://docs.cloudzero.com/reference/filtering.md)
+- [Idempotency](https://docs.cloudzero.com/reference/idempotency.md)
+- [Pagination](https://docs.cloudzero.com/reference/pagination.md)
+- [Sorting](https://docs.cloudzero.com/reference/sorting.md)
+- [Testing](https://docs.cloudzero.com/reference/testing.md)
+- [/v2/connections/billing/anycost/{connection_id}/billing_drops](https://docs.cloudzero.com/reference/getanycoststreamconnectionbillingdrops.md): Get all AnyCost Stream Connection Billing Drops
+- [/v2/connections/billing/anycost/{connection_id}/billing_drops](https://docs.cloudzero.com/reference/createoneanycoststreamconnectionbillingdrop.md): Create a single AnyCost Stream Connection Billing Drop. Note: An uncompressed request body larger than 5 MB will result in a 413 Request Entity Too Large response. For more information, see [Sending AnyCost Stream Data to CloudZero](https://docs.cloudzero.com/docs/anycost-send-stream-data) and the [Common Bill Format (CBF)](https://docs.cloudzero.com/docs/anycost-common-bill-format-cbf) page.
+- [/v2/connections/billing/anycost/{connection_id}/billing_drops/{month}](https://docs.cloudzero.com/reference/getanycoststreamconnectionbillingdropcontents.md): Read AnyCost Stream Connection Billing Drop contents
+- [/v2/connections/billing/anycost/validate_billing_drop](https://docs.cloudzero.com/reference/validateoneanycoststreamconnectionbillingdrop.md): Validate a single AnyCost Stream Connection Billing Drop. Note: An uncompressed request body larger than 5 MB will result in a 413 Request Entity Too Large response
+- [/v2/billing/costs](https://docs.cloudzero.com/reference/getbillingcosts.md): This API will return cost data according to the parameters passed in.  - Rate Limit: 60 requests/day. - Timeout: 30 seconds. - Pagination: Results are paginated in blocks of 10,000 records.   - Using cursors for pagination doesn't affect the rate limit.   - You have 24 hours to page through your results before you will need to rerun your query.   - While using pagination, your results will be static as of run time. - This data is statically sorted as `usage_date asc`.   NOTE: The Dimension IDs referenced within this document are the IDs by which you reference dimensions when authoring in CostFormation. You can read more about this [here](https://docs.cloudzero.com/docs/costformation-definition-language-guide#specifying-sources).  **API Call Examples** For the following examples, the following updates need to be made before running: - Replace <START_DATE_HERE> with a properly formatted start date (`2023-10-26` or (date and time encoded) `2023-10-26T14%3A27%3A46%2B00%3A00`) - Replace <GRANULARITY_VALUE_HERE> with the desired granularity (`hourly`, `daily`,  `weekly`, `monthly`, `yearly`)  **Real Cost Grouped by Account and Service, Filtered by Cloud Provider = AWS** - `https://api.cloudzero.com/v2/billing/costs?start_date=<START_DATE_HERE>&granularity=<GRANULARITY_VALUE_HERE>&group_by=Account&group_by=Service&filters=%7B%22CloudProvider%22%3A%20%5B%22AWS%22%5D%7D&cost_type=real_cost`  **Real Cost Grouped by Account and Service Detail Dimension, Filtered by Service = AmazonS3** - `https://api.cloudzero.com/v2/billing/costs?start_date=<START_DATE_HERE>&granularity=<GRANULARITY_VALUE_HERE>&group_by=Account&group_by=CZ%3ADefined%3AServiceDetail&filters=%7B%22Service%22%3A%20%5B%22AmazonS3%22%5D%7D&cost_type=real_cost`  **Real Cost Grouped by by Account Name and Service** - `https://api.cloudzero.com/v2/billing/costs?start_date=<START_DATE_HERE>&granularity=<GRANULARITY_VALUE_HERE>&group_by=User%3ADefined%3AAccountName&group_by=Service&cost_type=real_cost`
+- [/v2/billing/dimensions](https://docs.cloudzero.com/reference/getbillingdimensions.md): This API will return a list of dimensions available for use in the `getBillingCosts` API and in CostFormation.
+- [/v2/connections/billing](https://docs.cloudzero.com/reference/getbillingconnections.md): Get a list of Billing Connections
+- [/v2/connections/billing](https://docs.cloudzero.com/reference/createbillingconnection.md): Create a new Billing Connection
+- [/v2/connections/billing/{connection_id}](https://docs.cloudzero.com/reference/getonebillingconnection.md): Get a single Billing Connection
+- [/v2/connections/billing/{connection_id}](https://docs.cloudzero.com/reference/updateonebillingconnection.md): Update a single Billing Connection.  **Note:** Billing connections managed by CloudZero (such as Azure, GCP, and AWS) cannot be modified. This operation is supported only for [AnyCost Bucket connections](https://docs.cloudzero.com/docs/anycost-bucket-getting-started).
+- [/v2/connections/billing/{connection_id}](https://docs.cloudzero.com/reference/deleteonebillingconnection.md): Delete a single Billing Connection Upon disconnect of a billing connection, after the next ingest, all billing data related to that connection will be removed from the platform. However, be aware that although this data is no longer visible in the platform, it will still exist in the CloudZero data stores. If you need a more permanent deletion due to audit or security concerns, see your CloudZero Account Manager. Note: This is not supported for AWS and Snowflake connections
+- [/v2/budgets](https://docs.cloudzero.com/reference/getbudgets.md): Get a list of Budgets
+- [/v2/budgets](https://docs.cloudzero.com/reference/createbudget.md): Create a new Budget
+- [/v2/budgets/{budget_id}](https://docs.cloudzero.com/reference/getonebudget.md): Get a single Budget
+- [/v2/budgets/{budget_id}](https://docs.cloudzero.com/reference/updateonebudget.md): Update a single Budget
+- [/v2/budgets/{budget_id}](https://docs.cloudzero.com/reference/deleteonebudget.md): Delete a single Budget
+- [Delete comment](https://docs.cloudzero.com/reference/delete_v2_optimize_comments__comment_id__delete.md): Deletes a comment on a recommendation.
+- [Update comment](https://docs.cloudzero.com/reference/patch_v2_optimize_comments__comment_id__patch.md): Updates a comment on a recommendation.
+- [Get comments for recommendation](https://docs.cloudzero.com/reference/get_comments_for_recommendation_v2_optimize_recommendations__recommendation_id__comments_get.md): Returns all comments associated with a specific recommendation, sorted by creation time.
+- [Create comment](https://docs.cloudzero.com/reference/post_v2_optimize_comments_post.md): Creates a comment on one or more recommendations.
+- [/v2/costformation/definition/versions](https://docs.cloudzero.com/reference/getcostformationdefinitionversions.md): Get a list of CloudZero CostFormation Definition Versions.
+- [/v2/costformation/definition/versions](https://docs.cloudzero.com/reference/createcostformationdefinitionversion.md): Create a new CloudZero CostFormation Definition version. Ten (10) MB is the general payload size limitation and it cannot be raised. For more information, see the [Sample Python CostFormation Script](https://docs.cloudzero.com/docs/sample-python-costformation-script).
+- [/v2/costformation/definition/versions/{version}](https://docs.cloudzero.com/reference/getonecostformationdefinitionversion.md): Get a CloudZero CostFormation Definition Version
+- [/v2/costformation/definitions/async](https://docs.cloudzero.com/reference/createcostformationdefinitionasync.md): Submit an asynchronous CostFormation definition publish job. Returns a job ID and initial status. Use the Get a publish job endpoint to poll for completion.
+- [/v2/costformation/publish-jobs](https://docs.cloudzero.com/reference/listcostformationpublishjobs.md): List all CostFormation publish jobs for the organization, in reverse chronological order.
+- [/v2/costformation/publish-jobs/{jobId}](https://docs.cloudzero.com/reference/getcostformationpublishjob.md): Get the status and details of a specific CostFormation publish job by its job ID.
+- [/v2/costformation/publish-jobs/{jobId}/cancel](https://docs.cloudzero.com/reference/cancelcostformationpublishjob.md): Cancel a pending or in-progress CostFormation publish job.
+- [/v2/costformation/namespace](https://docs.cloudzero.com/reference/createnamespace.md): Create a new User-Managed CloudZero CostFormation Namespace
+- [/v2/costformation/namespace](https://docs.cloudzero.com/reference/getnamespaces.md): Get the list of all User-Managed CloudZero CostFormation Namespaces. This endpoint supports pagination.
+- [/v2/costformation/namespace/{id}](https://docs.cloudzero.com/reference/getnamespace.md): Get the details of an existing User-Managed CloudZero CostFormation Namespace
+- [/v2/costformation/namespace/{id}](https://docs.cloudzero.com/reference/updatenamespace.md): Replace the settings for a User-Managed CostFormation Namespace, including role-based access control (`view_role_ids`, `edit_role_ids`) and the optional `display_name`. `edit_role_ids` must be a subset of `view_role_ids`.
+- [/v2/costformation/namespace/{id}](https://docs.cloudzero.com/reference/deletenamespace.md): Delete a User-Managed CloudZero CostFormation Namespace
+- [/v2/insights](https://docs.cloudzero.com/reference/getinsights.md): Get a list of Insights
+- [/v2/insights](https://docs.cloudzero.com/reference/createinsight.md): Create a new Insight
+- [/v2/insights/{insight_id}](https://docs.cloudzero.com/reference/getoneinsight.md): Get a single Insight
+- [/v2/insights/{insight_id}](https://docs.cloudzero.com/reference/deleteoneinsight.md): Delete a single Insight
+- [/v2/insights/{insight_id}](https://docs.cloudzero.com/reference/updateoneinsight.md): Update a single Insight
+- [/v2/insights/{insight_id}/comments](https://docs.cloudzero.com/reference/getcommentsforoneinsight.md): Get a list of Comments for an Insight
+- [/v2/insights/{insight_id}/comments](https://docs.cloudzero.com/reference/createcommentforoneinsight.md): Create a new Comment for an Insight
+- [/v2/insights/{insight_id}/comments/{comment_id}](https://docs.cloudzero.com/reference/updateonecommentforoneinsight.md): Update one Comment for an Insight
+- [Get recommendation](https://docs.cloudzero.com/reference/get_one_v2_optimize_recommendations__recommendation_id__get.md): Returns the full details of a single recommendation, including metadata, suggested actions, and cost impact. **Note:** The `optimization_id` field is deprecated. Use `recommendation_type_id` instead.
+- [List recommendations](https://docs.cloudzero.com/reference/get_all_v2_optimize_recommendations_get.md): Gets recommendations for a specified organization in paginated form. This endpoint supports filtering, sorting, and grouping by various columns as well as searching. **Note:** The `optimization_id` field is deprecated. Use `recommendation_type_id` instead.
+- [Update recommendations](https://docs.cloudzero.com/reference/update_v2_optimize_recommendations_patch.md): Bulk-update one or more recommendations. Supports changing status, effort level, and work item linkage. An optional reason can be provided for audit purposes.
+- [/v2/roles](https://docs.cloudzero.com/reference/getroles.md): Get a list of Roles defined in the organization. Supports pagination, filtering by name, and sorting by name, creation date, or last updated date.
+- [/v2/roles](https://docs.cloudzero.com/reference/createrole.md): Create a new Role with a name, description, and a set of Permission Sets that define what the role can access
+- [/v2/roles/{role_id}](https://docs.cloudzero.com/reference/getonerole.md): Get a single Role by ID, including its name, description, and assigned Permission Sets
+- [/v2/roles/{role_id}](https://docs.cloudzero.com/reference/updateonerole.md): Update a single Role's name, description, or assigned Permission Sets
+- [/v2/roles/{role_id}](https://docs.cloudzero.com/reference/deleteonerole.md): Delete a single Role. Users currently assigned to this role will lose the permissions it grants.
+- [/v2/roles/permission-sets](https://docs.cloudzero.com/reference/getpermissionsets.md): Get a list of available Permission Sets that can be assigned to roles
+- [/v2/views](https://docs.cloudzero.com/reference/getviews.md): Get a list of Views
+- [/v2/views/{view_id}](https://docs.cloudzero.com/reference/getoneview.md): Get a single View
+- [/v2/views](https://docs.cloudzero.com/reference/createview.md): Create a View
+- [/v2/views/{view_id}](https://docs.cloudzero.com/reference/updateview.md): Update a View
+- [/v2/views/{view_id}](https://docs.cloudzero.com/reference/deleteview.md): Delete a View
+- [Get recommendation type](https://docs.cloudzero.com/reference/get_one_recommendation_type.md): Gets a single recommendation type given its id.
+- [List recommendation types](https://docs.cloudzero.com/reference/list_all_recommendation_types.md): Gets recommendation types.
+- [Update recommendation types](https://docs.cloudzero.com/reference/update_recommendation_types.md): Update multiple recommendation types. Returns the updated collection of recommendation types.
+- [Post an event](https://docs.cloudzero.com/reference/postevent.md): When something happens in one of your engineering systems that may have an impact on your cloud costs, submit an `Event` to the CloudZero API to correlate the `Event` with your ongoing cloud costs. For example, you can send us an `Event` every time you do a deployment. CloudZero will then correlate those deployment `Event`s with changing cloud costs to help you understand what is driving said costs in any given period of time.
+- [Getting Started with Telemetry](https://docs.cloudzero.com/reference/telemetry-api-1.md)
+- [Allocation Telemetry](https://docs.cloudzero.com/reference/allocation-telemetry-api-1.md)
+- [Sum telemetry records](https://docs.cloudzero.com/reference/sumallocationtelemetry.md): Allocation telemetry provides additional information that the CloudZero system can use to split your cloud cost data through custom allocation dimensions. In this way, you can gain further insights into the costs of your multi-tenant systems, shared infrastructure, and more.  The `telemetry_stream_name` sent to this API can be used in the `Streams` parameter of an `AllocateByStreams` custom dimension (see https://docs.cloudzero.com/docs/allocation-short-form-rules#allocatebystreams-short-form-rule)  **Note**: This endpoint is functionally identical to the legacy `/unit-cost/v1/telemetry/allocation/{telemetry_stream_name}` endpoint.
+- [Replace telemetry records](https://docs.cloudzero.com/reference/replaceallocationtelemetry.md): This endpoint will replace any data within the appropriate stream that matches the supplied properties (timestamp and granularity are minimally required).  **Note:** If no existing data matches the supplied properties, the data will be added to the stream.
+- [Replace telemetry records for the submitted dates](https://docs.cloudzero.com/reference/replaceperiodallocationtelemetry.md): Atomically replace telemetry records by usage date. For every date present in the submitted batch, all existing records on that date are dropped and the submitted records inserted. Dates not present in the batch are left untouched.
+- [Delete telemetry records](https://docs.cloudzero.com/reference/deleteallocationtelemetry.md): This endpoint will delete any data within the appropriate stream that matches the supplied properties (timestamp and granularity are minimally required).  **Note:** The unit metric must already exist when using this endpoint, and no "value" can be supplied.
+- [Post telemetry records](https://docs.cloudzero.com/reference/postallocationtelemetry.md): Allocation telemetry provides additional information that the CloudZero system can use to split your cloud cost data through custom allocation dimensions. In this way, you can gain further insights into the costs of your multi-tenant systems, shared infrastructure, and more.  The `telemetry_stream_name` sent to this API can be used in the `Streams` parameter of an `AllocateByStreams` custom dimension (see https://docs.cloudzero.com/docs/allocation-short-form-rules#allocatebystreams-short-form-rule)   **Note**: This endpoint is the legacy version of `/unit-cost/v1/telemetry/allocation/{telemetry_stream_name}/sum`. It is functionally identical, but predates the operational path parameter concept.
+- [Unit Cost Metric Telemetry](https://docs.cloudzero.com/reference/unit-metric-telemetry-api-1.md)
+- [Sum metrics records](https://docs.cloudzero.com/reference/summetrictelemetry.md): A new public endpoint is available to send CloudZero Unit Metric telemetry data. This endpoint allows you to send Unit Metric data that will automatically be available in the CloudZero Analytics platform after the next data ingest.  **Note**: This endpoint is functionally identical to the legacy `/unit-cost/v1/telemetry/metric/{metric_name}` endpoint.
+- [Replace metrics records](https://docs.cloudzero.com/reference/replacemetrictelemetry.md): This endpoint will replace any data within the appropriate stream that matches the supplied properties (timestamp is minimally required).  **Note:** If no existing data matches the supplied properties, the data will be added to the stream.
+- [Replace metric records for the submitted dates](https://docs.cloudzero.com/reference/replaceperiodmetrictelemetry.md): Atomically replace metric telemetry records by usage date. For every date present in the submitted batch, all existing records on that date are dropped and the submitted records inserted. Dates not present in the batch are left untouched.
+- [Delete metrics records](https://docs.cloudzero.com/reference/deletemetrictelemetry.md): This endpoint will delete any data within the appropriate stream that matches the supplied properties (timestamp is minimally required).  **Note:** The unit metric must already exist when using this endpoint and "value" is an invalid field.
+- [Post metrics records](https://docs.cloudzero.com/reference/postmetrictelemetry.md): A new public endpoint is available to send CloudZero Unit Metric telemetry data. This endpoint allows you to send Unit Metric data that will automatically be available in the CloudZero Analytics platform after the next data ingest.  **Note**: This endpoint is the legacy version of `/unit-cost/v1/telemetry/metric/{metric_name}/sum`. It is functionally identical, but predates the operational path parameter concept.
+- [Get metrics records](https://docs.cloudzero.com/reference/getmetrictelemetry.md): Get most recently submitted telemetry records for a given stream.  **Note**: Recently submitted records can take several minutes to be available through this endpoint.
+- [Get telemetry stream records](https://docs.cloudzero.com/reference/get_unit-cost-v1-telemetry-telemetry-stream-name-records.md): Get most recently processed records for a given telemetry stream.  **Note**: Recently submitted telemetry data can take several hours to be available through this endpoint.
+- [Delete a telemetry stream](https://docs.cloudzero.com/reference/delete_unit-cost-v1-telemetry-telemetry-stream-name.md): Mark a telemetry stream for deletion.  It may take several minutes for this operation to complete. During that time you will be unable to create a new telemetry stream with the same name.
+
+## Changelog
+- [Control Notifications by View](https://docs.cloudzero.com/changelog/per-view-notification-mutes.md)
+- [Cloud Connection Notes](https://docs.cloudzero.com/changelog/cloud-connection-notes.md)
+- [Model Right Sizer](https://docs.cloudzero.com/changelog/model-right-sizer.md)
+- [Budgets](https://docs.cloudzero.com/changelog/budgets.md)
+- [Cost Formation](https://docs.cloudzero.com/changelog/cost-formation.md)
+- [Azure Connection](https://docs.cloudzero.com/changelog/azure-connection.md)
+- [AI Signals](https://docs.cloudzero.com/changelog/ai-signals.md)
+- [Amazon Bedrock spend by IAM principal, with CUR 2.0 support](https://docs.cloudzero.com/changelog/amazon-bedrock-spend-by-iam-principal-with-cur-20-support.md)
+- [Time Series Comparison](https://docs.cloudzero.com/changelog/time-series-comparison.md)
+- [Grafana Cloud Connector](https://docs.cloudzero.com/changelog/grafana-cloud-connector.md)

@@ -1,0 +1,406 @@
+{
+  "item": [
+    {
+      "id": "0514500c-2df7-4812-a49c-305d5e18dc7c",
+      "name": "AnyCost",
+      "description": {
+        "content": "Ingest cost data from any source using the AnyCost Stream Adaptor and Common Bill Format (CBF).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44bdcc1c-06fe-4bc7-bece-8be84620fd17",
+          "name": "CloudZero Create an AnyCost billing drop",
+          "request": {
+            "name": "CloudZero Create an AnyCost billing drop",
+            "description": {
+              "content": "Sends cost data in Common Bill Format (CBF) to an AnyCost Stream connection. The request body must fit within a 5MB JSON limit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "connections",
+                "billing",
+                "anycost",
+                ":connection_id",
+                "billing_drops"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connection_id",
+                  "description": "(Required) Unique identifier for the AnyCost Stream connection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"timestamp\": \"<dateTime>\",\n          \"cost\": \"<double>\",\n          \"service\": \"<string>\",\n          \"description\": \"<string>\",\n          \"metadata\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0b1ac30-71f4-4fd3-95a0-dc8b26068e3d",
+              "name": "Billing drop accepted for processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "connections",
+                    "billing",
+                    "anycost",
+                    ":connection_id",
+                    "billing_drops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connection_id",
+                      "description": "(Required) Unique identifier for the AnyCost Stream connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1975-07-06T08:41:49.120Z\",\n          \"cost\": 2192.737310903017,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1991-04-02T09:52:01.205Z\",\n          \"cost\": 3349.131782977185,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1961-02-28T03:47:46.992Z\",\n          \"cost\": 9893.952211279535,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1988-08-14T17:05:51.773Z\",\n          \"cost\": 4788.552060671751,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66d2e246-2afe-499a-ab57-bf10eef4d6f2",
+              "name": "Bad request. Invalid CBF data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "connections",
+                    "billing",
+                    "anycost",
+                    ":connection_id",
+                    "billing_drops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connection_id",
+                      "description": "(Required) Unique identifier for the AnyCost Stream connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1975-07-06T08:41:49.120Z\",\n          \"cost\": 2192.737310903017,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1991-04-02T09:52:01.205Z\",\n          \"cost\": 3349.131782977185,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1961-02-28T03:47:46.992Z\",\n          \"cost\": 9893.952211279535,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1988-08-14T17:05:51.773Z\",\n          \"cost\": 4788.552060671751,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e9c97a13-1b41-4a65-90ce-8641030f139f",
+              "name": "Unauthorized. Invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "connections",
+                    "billing",
+                    "anycost",
+                    ":connection_id",
+                    "billing_drops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connection_id",
+                      "description": "(Required) Unique identifier for the AnyCost Stream connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1975-07-06T08:41:49.120Z\",\n          \"cost\": 2192.737310903017,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1991-04-02T09:52:01.205Z\",\n          \"cost\": 3349.131782977185,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1961-02-28T03:47:46.992Z\",\n          \"cost\": 9893.952211279535,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1988-08-14T17:05:51.773Z\",\n          \"cost\": 4788.552060671751,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b284bc37-fc26-4bd6-9b22-597216aa7d31",
+              "name": "Payload too large. Exceeds 5MB limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "connections",
+                    "billing",
+                    "anycost",
+                    ":connection_id",
+                    "billing_drops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connection_id",
+                      "description": "(Required) Unique identifier for the AnyCost Stream connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1975-07-06T08:41:49.120Z\",\n          \"cost\": 2192.737310903017,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1991-04-02T09:52:01.205Z\",\n          \"cost\": 3349.131782977185,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1961-02-28T03:47:46.992Z\",\n          \"cost\": 9893.952211279535,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1988-08-14T17:05:51.773Z\",\n          \"cost\": 4788.552060671751,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea0d2682-5b84-4ad3-a5df-9464df425ea9",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "connections",
+                    "billing",
+                    "anycost",
+                    ":connection_id",
+                    "billing_drops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connection_id",
+                      "description": "(Required) Unique identifier for the AnyCost Stream connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_drops\": [\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1975-07-06T08:41:49.120Z\",\n          \"cost\": 2192.737310903017,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1991-04-02T09:52:01.205Z\",\n          \"cost\": 3349.131782977185,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"line_items\": [\n        {\n          \"timestamp\": \"1961-02-28T03:47:46.992Z\",\n          \"cost\": 9893.952211279535,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\"\n          }\n        },\n        {\n          \"timestamp\": \"1988-08-14T17:05:51.773Z\",\n          \"cost\": 4788.552060671751,\n          \"service\": \"string\",\n          \"description\": \"string\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloudzero.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a6bfb62-b689-4255-af3d-af7773dddd81",
+    "name": "CloudZero Allocation Telemetry AnyCost API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.\n\nContact Support:\n Name: CloudZero",
+      "type": "text/plain"
+    }
+  }
+}

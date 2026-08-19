@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CloudZero Allocation Telemetry Billing API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Get billing costs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v2/billing/costs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns cost data according to the parameters passed in. Supports grouping by Account, Service, and other dimensions with various filters and cost types."
+        },
+        {
+          "info": {
+            "name": "CloudZero Get billing dimensions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudzero.com/v2/billing/dimensions"
+          },
+          "docs": "Returns a list of dimensions available for use in the getBillingCosts API and in CostFormation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

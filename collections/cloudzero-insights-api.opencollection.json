@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CloudZero Allocation Telemetry Insights API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Insights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Get all insights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudzero.com/v2/insights",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all insights."
+        },
+        {
+          "info": {
+            "name": "CloudZero Create a new insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v2/insights",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new insight for tracking cost anomalies and patterns."
+        },
+        {
+          "info": {
+            "name": "CloudZero Get a single insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloudzero.com/v2/insights/:insight_id",
+            "params": [
+              {
+                "name": "insight_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the insight."
+              }
+            ]
+          },
+          "docs": "Returns a single insight by its identifier."
+        },
+        {
+          "info": {
+            "name": "CloudZero Update an insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloudzero.com/v2/insights/:insight_id",
+            "params": [
+              {
+                "name": "insight_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the insight."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing insight."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete an insight",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloudzero.com/v2/insights/:insight_id",
+            "params": [
+              {
+                "name": "insight_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the insight."
+              }
+            ]
+          },
+          "docs": "Deletes a single insight by its identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

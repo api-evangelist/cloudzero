@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CloudZero Allocation Telemetry API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Allocation Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CloudZero Post allocation telemetry records (sum)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v1/telemetry/allocation/:stream_name/sum",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the allocation telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends allocation telemetry data that will be summed with any existing data at the same timestamp and granularity within the stream."
+        },
+        {
+          "info": {
+            "name": "CloudZero Post allocation telemetry records (replace)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v1/telemetry/allocation/:stream_name/replace",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the allocation telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends allocation telemetry data that will replace any existing data at the same timestamp and granularity within the stream."
+        },
+        {
+          "info": {
+            "name": "CloudZero Delete allocation telemetry records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloudzero.com/v1/telemetry/allocation/:stream_name/delete",
+            "params": [
+              {
+                "name": "stream_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the allocation telemetry stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes any allocation data within the appropriate stream that matches the supplied properties. Timestamp and granularity are minimally required."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
