@@ -28,7 +28,7 @@ accessModel:
   generated: '2026-09-03'
   method: derived
 created: '2026-01-02'
-modified: '2026-05-19'
+modified: '2026-09-06'
 type: Index
 access: 3rd-Party
 position: Consuming
@@ -357,6 +357,9 @@ common:
     url: https://docs.cloudzero.com/llms.txt
   - type: Blog
     url: https://www.cloudzero.com/feed
+  - name: MCP Documentation
+    url: https://docs.cloudzero.com/docs/ai-mcp-oauth-clients
+    type: MCPDocumentation
 integrations:
   - name: Amazon Web Services
   - name: Kubernetes
