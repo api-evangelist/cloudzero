@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: CloudZero Allocation Telemetry Insights API
+  title: CloudZero Insights API
   description: The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It is organized around REST with predictable resource-oriented URLs, accepts JSON request bodies, returns JSON responses, and uses standard HTTP methods, headers, response codes, and authentication.
   version: 2.0.0
   contact:
@@ -171,6 +171,38 @@ paths:
           description: Insight not found.
 components:
   schemas:
+    InsightInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name for the insight.
+        description:
+          type: string
+          description: Description of what the insight tracks.
+        filters:
+          type: object
+          additionalProperties: true
+          description: Filters to apply to the insight.
+        group_by:
+          type: array
+          items:
+            type: string
+          description: Dimensions to group by.
+      required:
+      - name
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+          description: URL for the next page of results.
+        previous:
+          type: string
+          description: URL for the previous page of results.
+        total:
+          type: integer
+          description: Total number of results.
     Insight:
       type: object
       properties:
@@ -200,38 +232,6 @@ components:
           items:
             type: string
           description: Dimensions used for grouping.
-    Pagination:
-      type: object
-      properties:
-        next:
-          type: string
-          description: URL for the next page of results.
-        previous:
-          type: string
-          description: URL for the previous page of results.
-        total:
-          type: integer
-          description: Total number of results.
-    InsightInput:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Display name for the insight.
-        description:
-          type: string
-          description: Description of what the insight tracks.
-        filters:
-          type: object
-          additionalProperties: true
-          description: Filters to apply to the insight.
-        group_by:
-          type: array
-          items:
-            type: string
-          description: Dimensions to group by.
-      required:
-      - name
   securitySchemes:
     apiKey:
       type: apiKey

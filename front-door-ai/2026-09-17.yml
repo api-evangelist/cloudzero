@@ -1,0 +1,34 @@
+# Front Door AI Index — cloudzero — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: cloudzero
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.cloudzero.com
+  final_host: www.cloudzero.com
+  ownership: own
+  owner: cloudzero
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 59
+  host_score: 59
+  density: 39.92
+  words: 1478
+  tiers:
+    agentic: 3
+    core: 49
+    model: 7
+  ambiguous: 4
+  top_terms:
+    AI: 49
+    Anthropic: 3
+    agent: 3
+    OpenAI: 2
+    AI agent: 1
+    Claude: 1
+    Gemini: 1
+    copilot: 1
+    intelligence: 1
+    prompts: 1
