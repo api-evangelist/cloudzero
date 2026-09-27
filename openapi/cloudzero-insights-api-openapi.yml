@@ -171,6 +171,18 @@ paths:
           description: Insight not found.
 components:
   schemas:
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+          description: URL for the next page of results.
+        previous:
+          type: string
+          description: URL for the previous page of results.
+        total:
+          type: integer
+          description: Total number of results.
     InsightInput:
       type: object
       properties:
@@ -191,18 +203,6 @@ components:
           description: Dimensions to group by.
       required:
       - name
-    Pagination:
-      type: object
-      properties:
-        next:
-          type: string
-          description: URL for the next page of results.
-        previous:
-          type: string
-          description: URL for the previous page of results.
-        total:
-          type: integer
-          description: Total number of results.
     Insight:
       type: object
       properties:

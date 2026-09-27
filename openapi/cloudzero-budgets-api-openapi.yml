@@ -171,18 +171,6 @@ paths:
           description: Budget not found.
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        next:
-          type: string
-          description: URL for the next page of results.
-        previous:
-          type: string
-          description: URL for the previous page of results.
-        total:
-          type: integer
-          description: Total number of results.
     BudgetInput:
       type: object
       properties:
@@ -220,6 +208,18 @@ components:
       - name
       - amount
       - period
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+          description: URL for the next page of results.
+        previous:
+          type: string
+          description: URL for the previous page of results.
+        total:
+          type: integer
+          description: Total number of results.
     Budget:
       type: object
       properties:
