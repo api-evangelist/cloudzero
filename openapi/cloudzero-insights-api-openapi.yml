@@ -171,38 +171,6 @@ paths:
           description: Insight not found.
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        next:
-          type: string
-          description: URL for the next page of results.
-        previous:
-          type: string
-          description: URL for the previous page of results.
-        total:
-          type: integer
-          description: Total number of results.
-    InsightInput:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Display name for the insight.
-        description:
-          type: string
-          description: Description of what the insight tracks.
-        filters:
-          type: object
-          additionalProperties: true
-          description: Filters to apply to the insight.
-        group_by:
-          type: array
-          items:
-            type: string
-          description: Dimensions to group by.
-      required:
-      - name
     Insight:
       type: object
       properties:
@@ -232,6 +200,38 @@ components:
           items:
             type: string
           description: Dimensions used for grouping.
+    InsightInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name for the insight.
+        description:
+          type: string
+          description: Description of what the insight tracks.
+        filters:
+          type: object
+          additionalProperties: true
+          description: Filters to apply to the insight.
+        group_by:
+          type: array
+          items:
+            type: string
+          description: Dimensions to group by.
+      required:
+      - name
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+          description: URL for the next page of results.
+        previous:
+          type: string
+          description: URL for the previous page of results.
+        total:
+          type: integer
+          description: Total number of results.
   securitySchemes:
     apiKey:
       type: apiKey
