@@ -171,35 +171,6 @@ paths:
           description: Insight not found.
 components:
   schemas:
-    Insight:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the insight.
-        name:
-          type: string
-          description: Display name for the insight.
-        description:
-          type: string
-          description: Description of what the insight tracks.
-        created_at:
-          type: string
-          format: date-time
-          description: Timestamp when the insight was created.
-        updated_at:
-          type: string
-          format: date-time
-          description: Timestamp when the insight was last updated.
-        filters:
-          type: object
-          additionalProperties: true
-          description: Filters applied to the insight.
-        group_by:
-          type: array
-          items:
-            type: string
-          description: Dimensions used for grouping.
     InsightInput:
       type: object
       properties:
@@ -232,6 +203,35 @@ components:
         total:
           type: integer
           description: Total number of results.
+    Insight:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the insight.
+        name:
+          type: string
+          description: Display name for the insight.
+        description:
+          type: string
+          description: Description of what the insight tracks.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the insight was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the insight was last updated.
+        filters:
+          type: object
+          additionalProperties: true
+          description: Filters applied to the insight.
+        group_by:
+          type: array
+          items:
+            type: string
+          description: Dimensions used for grouping.
   securitySchemes:
     apiKey:
       type: apiKey
