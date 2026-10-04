@@ -1,0 +1,26 @@
+slug: cloudzero
+provider: CloudZero
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Billing
+  spec_file: cloudzero-billing-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.72
+  evidence: POST /v2/billing/costs getBillingCosts "Get billing costs"; GET /v2/billing/dimensions "Get
+    billing dimensions"
+  reason: Despite the 'Billing' tag, the operations query the organisation's own cloud infrastructure
+    costs and their dimensions — IT spend reporting and cost optimisation, not subscription invoicing
+    of customers.
