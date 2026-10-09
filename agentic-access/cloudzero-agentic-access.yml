@@ -1,22 +1,24 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/cloudzero-api-openapi.yml
+source: openapi/cloudzero-allocation-telemetry-api-openapi.yml, openapi/cloudzero-anycost-api-openapi.yml,
+  openapi/cloudzero-billing-api-openapi.yml, openapi/cloudzero-budgets-api-openapi.yml, openapi/cloudzero-insights-api-openapi.yml,
+  openapi/cloudzero-unit-metric-telemetry-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 19
   by_action_class:
-    acting: 14
-    connected: 5
+    acting: 13
+    connected: 6
   by_consequence:
-    write: 14
-    read: 5
+    write: 13
+    read: 6
   human_in_the_loop_required: 0
 operations:
-- path: /v2/billing/costs
+- path: /v1/telemetry/allocation/{stream_name}/sum
   method: post
-  operationId: getBillingCosts
+  operationId: postAllocationTelemetrySum
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -30,6 +32,64 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /v1/telemetry/allocation/{stream_name}/replace
+  method: post
+  operationId: postAllocationTelemetryReplace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/telemetry/allocation/{stream_name}/delete
+  method: post
+  operationId: deleteAllocationTelemetry
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/connections/billing/anycost/{connection_id}/billing_drops
+  method: post
+  operationId: createAnyCostBillingDrop
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/billing/costs
+  method: post
+  operationId: getBillingCosts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v2/billing/dimensions
   method: get
   operationId: getBillingDimensions
@@ -40,74 +100,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v2/insights
-  method: get
-  operationId: getInsights
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v2/insights
-  method: post
-  operationId: createInsight
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v2/insights/{insight_id}
-  method: get
-  operationId: getOneInsight
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v2/insights/{insight_id}
-  method: put
-  operationId: updateOneInsight
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v2/insights/{insight_id}
-  method: delete
-  operationId: deleteOneInsight
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v2/budgets
   method: get
   operationId: getBudgets
@@ -176,6 +168,74 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /v2/insights
+  method: get
+  operationId: getInsights
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/insights
+  method: post
+  operationId: createInsight
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/insights/{insight_id}
+  method: get
+  operationId: getOneInsight
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/insights/{insight_id}
+  method: put
+  operationId: updateOneInsight
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/insights/{insight_id}
+  method: delete
+  operationId: deleteOneInsight
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /v1/telemetry/{stream_name}/records
   method: post
   operationId: postMetricTelemetry
@@ -211,70 +271,6 @@ operations:
 - path: /v1/telemetry/{stream_name}
   method: delete
   operationId: deleteMetricTelemetryStream
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/telemetry/allocation/{stream_name}/sum
-  method: post
-  operationId: postAllocationTelemetrySum
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/telemetry/allocation/{stream_name}/replace
-  method: post
-  operationId: postAllocationTelemetryReplace
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/telemetry/allocation/{stream_name}/delete
-  method: post
-  operationId: deleteAllocationTelemetry
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v2/connections/billing/anycost/{connection_id}/billing_drops
-  method: post
-  operationId: createAnyCostBillingDrop
   x-agentic-access:
     action-class: acting
     consequence: write
