@@ -1,4 +1,4 @@
-# CloudZero (cloudzero)
+# CloudZero
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,195 +66,190 @@
 
 CloudZero is a cloud cost intelligence and FinOps platform that automates the collection, allocation, and analysis of infrastructure spend to uncover waste and improve unit economics. The CloudZero API V2 is REST-oriented, uses API key authentication, and exposes endpoints for querying billing costs and dimensions, managing insights and budgets, sending unit metric and allocation telemetry, and ingesting cost data from any source via the AnyCost framework.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cloudzero/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cloudzero/refs/heads/main/apis.yml)
+**Areas:** Budgets · Cloud Cost Management · Cost Allocation · Cost Optimization · FinOps · Telemetry · Unit Economics
 
-## Scope
+## CloudZero on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for CloudZero is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cloudzero/](https://apis.io/providers/cloudzero/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (12)
 
-- Budgets
-- Cloud Cost Management
-- Cost Allocation
-- Cost Optimization
-- FinOps
-- Telemetry
-- Unit Economics
+- [CloudZero Billing API](https://apis.io/apis/cloudzero/billing/) — The Billing API exposes cost and dimension data for analysis. Endpoints under /v2/billing return cost rows over a date range with selectable dimensions…
+- [CloudZero Insights API](https://apis.io/apis/cloudzero/insights/) — The Insights API stores and surfaces actionable cost insights and recommendations. Endpoints under /v2/insights support listing, creating, updating, and…
+- [CloudZero Budgets API](https://apis.io/apis/cloudzero/budgets/) — The Budgets API manages cost-and-usage budgets, alerts, thresholds, and actuals tracking. Endpoints under /v2/budgets list, create, update, and delete…
+- [CloudZero Allocation Telemetry API](https://apis.io/apis/cloudzero/allocation-telemetry/) — Allocation Telemetry sends, edits, and deletes allocation telemetry data for splitting cloud cost across custom allocation dimensions. Endpoints under…
+- [CloudZero Unit Metric Telemetry API](https://apis.io/apis/cloudzero/unit-metric-telemetry/) — Unit Metric Telemetry ingests business metrics that drive unit-economics calculations (cost per customer, cost per transaction, cost per tenant). Endpoints…
+- [CloudZero AnyCost API](https://apis.io/apis/cloudzero/anycost/) — AnyCost ingests cost data from any source using the AnyCost Stream Adaptor and Common Bill Format (CBF). Endpoints under…
+- [CloudZero Allocation Telemetry API](https://apis.io/apis/cloudzero/cloudzero-allocation-telemetry-api/) — Send, edit, and delete allocation telemetry data for splitting cloud cost data through custom allocation dimensions.
+- [CloudZero AnyCost API](https://apis.io/apis/cloudzero/cloudzero-anycost-api/) — Ingest cost data from any source using the AnyCost Stream Adaptor and Common Bill Format (CBF).
+- [CloudZero Billing API](https://apis.io/apis/cloudzero/cloudzero-billing-api/) — Retrieve cost and dimension data for billing analysis.
+- [CloudZero Budgets API](https://apis.io/apis/cloudzero/cloudzero-budgets-api/) — Create, read, update, and delete budgets for cost tracking.
+- [CloudZero Insights API](https://apis.io/apis/cloudzero/cloudzero-insights-api/) — Create, read, update, and delete cost insights.
+- [CloudZero Unit Metric Telemetry API](https://apis.io/apis/cloudzero/cloudzero-unit-metric-telemetry-api/) — Send, edit, and delete unit metric telemetry data related to your system operations.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-01-02
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### CloudZero API
+Model Context Protocol servers that expose the API to agents.
 
-The CloudZero API V2 enables you to automate the collection, allocation, and analysis of your infrastructure spend. It provides endpoints for querying billing costs and dimensions, managing insights and budgets, sending unit metric and allocation telemetry data, and ingesting cost data from any source via the AnyCost framework.
+- [Moved to /providers/cloudzero/](https://apis.io/servers/cloudzero/cloudzero/)
 
-- **Human URL:** [https://docs.cloudzero.com/reference/introduction](https://docs.cloudzero.com/reference/introduction)
-- **Base URL:** `https://api.cloudzero.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Billing
-- Budgets
-- Cloud Costs
-- Cost Allocation
-- FinOps
-- Insights
-- Telemetry
-- Unit Economics
+- [Cloudzero Agentic Access](https://apis.io/agentic-access/cloudzero/cloudzero-agentic-access/)
 
-#### Properties
+#### JSON Schema (11)
 
-- [Documentation](https://docs.cloudzero.com/reference/introduction)
-- [OpenAPI](openapi/cloudzero-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cloudzero-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudzero-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authorization](https://docs.cloudzero.com/reference/authorization)
-- [JSON Schema](json-schema/cloudzero-cost.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cloudzero-insight.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cloudzero-budget.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cloudzero-telemetry-record.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cloudzero-billing-drop.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/cloudzero-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/cloudzero-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
+The data models the API reads and writes.
 
-### CloudZero Billing API
+- [AllocationTelemetryRecord](https://apis.io/schemas/cloudzero/cloudzero-allocationtelemetryrecord/)
+- [CloudZero Billing Drop](https://apis.io/schemas/cloudzero/cloudzero-billing-drop/)
+- [BillingDrop](https://apis.io/schemas/cloudzero/cloudzero-billingdrop/)
+- [CloudZero Budget](https://apis.io/schemas/cloudzero/cloudzero-budget/)
+- [BudgetInput](https://apis.io/schemas/cloudzero/cloudzero-budgetinput/)
+- [CloudZero Cost](https://apis.io/schemas/cloudzero/cloudzero-cost/)
+- [CloudZero Insight](https://apis.io/schemas/cloudzero/cloudzero-insight/)
+- [InsightInput](https://apis.io/schemas/cloudzero/cloudzero-insightinput/)
+- [MetricTelemetryRecord](https://apis.io/schemas/cloudzero/cloudzero-metrictelemetryrecord/)
+- [Pagination](https://apis.io/schemas/cloudzero/cloudzero-pagination/)
+- [CloudZero Telemetry Record](https://apis.io/schemas/cloudzero/cloudzero-telemetry-record/)
 
-The Billing API exposes cost and dimension data for analysis. Endpoints under /v2/billing return cost rows over a date range with selectable dimensions (account, service, region, custom dimension) and metrics (real_cost, billed_cost). Pagination uses page and page_size query parameters.
+#### JSON Structure (1)
 
-- **Human URL:** [https://docs.cloudzero.com/reference/billing](https://docs.cloudzero.com/reference/billing)
-- **Base URL:** `https://api.cloudzero.com/v2/billing`
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Cloudzero Structure](https://apis.io/json-structure/cloudzero/cloudzero-structure/)
 
-- Billing
-- Cost Reporting
-- Dimensions
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://docs.cloudzero.com/reference/billing)
-- [Postman Collection](collections/cloudzero-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudzero-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Cloudzero Context](https://apis.io/jsonld/cloudzero/cloudzero-context/)
 
-### CloudZero Insights API
+#### Vocabulary (1)
 
-The Insights API stores and surfaces actionable cost insights and recommendations. Endpoints under /v2/insights support listing, creating, updating, and deleting insight records, including assigned owners, severity, status, and estimated savings.
+The provider's domain terms, defined.
 
-- **Human URL:** [https://docs.cloudzero.com/reference/insights](https://docs.cloudzero.com/reference/insights)
-- **Base URL:** `https://api.cloudzero.com/v2/insights`
+- [CloudZero Domain Vocabulary](https://apis.io/vocabularies/cloudzero/cloudzero-vocabulary/)
 
-#### Tags
+#### Collections (13)
 
-- Cost Optimization
-- Insights
-- Recommendations
+Postman and Open Collection request collections.
 
-#### Properties
+- [CloudZero Allocation Telemetry API](https://apis.io/collections/cloudzero/open-cloudzero-allocation-telemetry-api/)
+- [CloudZero Allocation Telemetry AnyCost API](https://apis.io/collections/cloudzero/open-cloudzero-anycost-api/)
+- [CloudZero API](https://apis.io/collections/cloudzero/open-cloudzero-api/)
+- [CloudZero Allocation Telemetry Billing API](https://apis.io/collections/cloudzero/open-cloudzero-billing-api/)
+- [CloudZero Allocation Telemetry Budgets API](https://apis.io/collections/cloudzero/open-cloudzero-budgets-api/)
+- [CloudZero Allocation Telemetry Insights API](https://apis.io/collections/cloudzero/open-cloudzero-insights-api/)
+- [CloudZero Allocation Telemetry Unit Metric Telemetry API](https://apis.io/collections/cloudzero/open-cloudzero-unit-metric-telemetry-api/)
+- [CloudZero Allocation Telemetry API](https://apis.io/collections/cloudzero/postman-cloudzero-allocation-telemetry-api/)
+- [CloudZero Allocation Telemetry AnyCost API](https://apis.io/collections/cloudzero/postman-cloudzero-anycost-api/)
+- [CloudZero Allocation Telemetry Billing API](https://apis.io/collections/cloudzero/postman-cloudzero-billing-api/)
+- [CloudZero Allocation Telemetry Budgets API](https://apis.io/collections/cloudzero/postman-cloudzero-budgets-api/)
+- [CloudZero Allocation Telemetry Insights API](https://apis.io/collections/cloudzero/postman-cloudzero-insights-api/)
+- [CloudZero Allocation Telemetry Unit Metric Telemetry API](https://apis.io/collections/cloudzero/postman-cloudzero-unit-metric-telemetry-api/)
 
-- [Documentation](https://docs.cloudzero.com/reference/insights)
-- [Postman Collection](collections/cloudzero-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudzero-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-### CloudZero Budgets API
+Spectral rulesets for the provider's contracts.
 
-The Budgets API manages cost-and-usage budgets, alerts, thresholds, and actuals tracking. Endpoints under /v2/budgets list, create, update, and delete budgets and surface current consumption against limits.
+- [CloudZero — jsonschema rules](https://apis.io/rules/cloudzero/cloudzero-jsonschema-spectral-rules/)
+- [CloudZero API Rules](https://apis.io/rules/cloudzero/cloudzero-rules/)
 
-- **Human URL:** [https://docs.cloudzero.com/reference/budgets](https://docs.cloudzero.com/reference/budgets)
-- **Base URL:** `https://api.cloudzero.com/v2/budgets`
+#### Security (3)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Alerts
-- Budgets
-- FinOps
+- [Cloudzero Authentication](https://apis.io/security/cloudzero/cloudzero-authentication/)
+- [Cloudzero Domain Security](https://apis.io/security/cloudzero/cloudzero-domain-security/)
+- [Cloudzero Trust Center](https://apis.io/security/cloudzero/cloudzero-trust-center/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://docs.cloudzero.com/reference/budgets)
-- [Postman Collection](collections/cloudzero-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudzero-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### CloudZero Allocation Telemetry API
+- [Cloudzero Plans Pricing](https://apis.io/plans/cloudzero/cloudzero-plans-pricing/)
 
-Allocation Telemetry sends, edits, and deletes allocation telemetry data for splitting cloud cost across custom allocation dimensions. Endpoints under /v1/telemetry/allocation/{stream_name} support sum, replace, and delete operations against a named telemetry stream.
+#### Rate limits (1)
 
-- **Human URL:** [https://docs.cloudzero.com/reference/allocation-telemetry](https://docs.cloudzero.com/reference/allocation-telemetry)
-- **Base URL:** `https://api.cloudzero.com/v1/telemetry/allocation`
+Published request limits.
 
-#### Tags
+- [Cloudzero Rate Limits](https://apis.io/rate-limits/cloudzero/cloudzero-rate-limits/)
 
-- Allocation
-- Cost Splitting
-- Telemetry
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://docs.cloudzero.com/reference/allocation-telemetry)
-- [Postman Collection](collections/cloudzero-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudzero-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Cloudzero Finops](https://apis.io/finops/cloudzero/cloudzero-finops/)
 
-### CloudZero Unit Metric Telemetry API
+## Where to find this API
 
-Unit Metric Telemetry ingests business metrics that drive unit-economics calculations (cost per customer, cost per transaction, cost per tenant). Endpoints under /v1/telemetry/{stream_name} support submitting records, deleting, and replacing values for named streams.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://docs.cloudzero.com/reference/unit-metric-telemetry](https://docs.cloudzero.com/reference/unit-metric-telemetry)
-- **Base URL:** `https://api.cloudzero.com/v1/telemetry`
-
-#### Tags
-
-- Telemetry
-- Unit Economics
-- Unit Metrics
-
-#### Properties
-
-- [Documentation](https://docs.cloudzero.com/reference/unit-metric-telemetry)
-- [Postman Collection](collections/cloudzero-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudzero-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### CloudZero AnyCost API
-
-AnyCost ingests cost data from any source using the AnyCost Stream Adaptor and Common Bill Format (CBF). Endpoints under /v2/connections/billing/anycost/{connection_id}/billing_drops accept uploads of normalized billing drops alongside native AWS, Azure, and GCP integrations.
-
-- **Human URL:** [https://docs.cloudzero.com/reference/anycost](https://docs.cloudzero.com/reference/anycost)
-- **Base URL:** `https://api.cloudzero.com/v2/connections/billing/anycost`
-
-#### Tags
-
-- AnyCost
-- Billing Drop
-- CBF
-- Common Bill Format
-- Ingestion
-
-#### Properties
-
-- [Documentation](https://docs.cloudzero.com/reference/anycost)
-- [Postman Collection](collections/cloudzero-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudzero-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/cloudzero)
 - [Website](https://www.cloudzero.com/)
-- [Portal](https://app.cloudzero.com/)
 - [Documentation](https://docs.cloudzero.com/)
 - [Pricing](https://www.cloudzero.com/pricing/)
-- [Status Page](https://status.cloudzero.com/)
-- [Git Hub](https://github.com/Cloudzero)
-- [Terms of Service](https://www.cloudzero.com/terms-of-service/)
-- [Privacy](https://www.cloudzero.com/privacy-policy/)
-- [Integrations](https://www.cloudzero.com/integrations/)
-- [L L Ms Txt](https://docs.cloudzero.com/llms.txt)
+- [Blog](https://www.cloudzero.com/feed)
+- [Terms of service](https://www.cloudzero.com/terms-of-service/)
+- [Status](https://status.cloudzero.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 41.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 66.4 |
+| Contract governance | 13.6 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 29.8 |
+| Access clarity | 34.2 |
+
+**Agent readiness 28.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 25.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cloudzero/](https://apis.io/providers/cloudzero/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for CloudZero: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cloudzero/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
